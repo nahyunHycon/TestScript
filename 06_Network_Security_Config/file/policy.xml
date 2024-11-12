@@ -1,0 +1,2810 @@
+<policy version="0.2.0">
+  <enclaves>
+    <enclave path="/">
+      <profiles>
+        <profile node="AWSIM" ns="/">
+          <topics subscribe="ALLOW">
+            <topic>/control/command/control_cmd</topic>
+            <topic>/control/command/emergency_cmd</topic>
+            <topic>/control/command/gear_cmd</topic>
+            <topic>/control/command/hazard_lights_cmd</topic>
+            <topic>/control/command/turn_indicators_cmd</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/awsim/ground_truth/localization/kinematic_state</topic>
+            <topic>/awsim/ground_truth/vehicle/pose</topic>
+            <topic>/sensing/camera/traffic_light/camera_info</topic>
+            <topic>/sensing/camera/traffic_light/image_raw</topic>
+            <topic>/sensing/gnss/pose</topic>
+            <topic>/sensing/gnss/pose_with_covariance</topic>
+            <topic>/sensing/imu/tamagawa/imu_raw</topic>
+            <topic>/vehicle/status/control_mode</topic>
+            <topic>/vehicle/status/gear_status</topic>
+            <topic>/vehicle/status/hazard_lights_status</topic>
+            <topic>/vehicle/status/steering_status</topic>
+            <topic>/vehicle/status/turn_indicators_status</topic>
+            <topic>/vehicle/status/velocity_status</topic>
+            <topic>clock</topic>
+          </topics>
+        </profile>
+        <profile node="RobotecGPULidar" ns="/">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/sensing/lidar/top/pointcloud_raw</topic>
+            <topic>/sensing/lidar/top/pointcloud_raw_ex</topic>
+            <topic>parameter_events</topic>
+            <topic>rosout</topic>
+          </topics>
+        </profile>
+        <profile node="aggregator_node" ns="/">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>diagnostics</topic>
+            <topic>parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>diagnostics_agg</topic>
+            <topic>diagnostics_toplevel_state</topic>
+            <topic>parameter_events</topic>
+            <topic>rosout</topic>
+          </topics>
+        </profile>
+        <profile node="container" ns="/autoware_api/external/rtc_controller">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="node" ns="/autoware_api/external/rtc_controller">
+          <services reply="ALLOW">
+            <service>/api/external/set/rtc_auto_mode</service>
+            <service>/api/external/set/rtc_commands</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <services request="ALLOW">
+            <service>/planning/cooperate_commands/avoidance_by_lane_change_left</service>
+            <service>/planning/cooperate_commands/avoidance_by_lane_change_right</service>
+            <service>/planning/cooperate_commands/avoidance_left</service>
+            <service>/planning/cooperate_commands/avoidance_right</service>
+            <service>/planning/cooperate_commands/blind_spot</service>
+            <service>/planning/cooperate_commands/crosswalk</service>
+            <service>/planning/cooperate_commands/detection_area</service>
+            <service>/planning/cooperate_commands/external_request_lane_change_left</service>
+            <service>/planning/cooperate_commands/external_request_lane_change_right</service>
+            <service>/planning/cooperate_commands/goal_planner</service>
+            <service>/planning/cooperate_commands/intersection</service>
+            <service>/planning/cooperate_commands/intersection_occlusion</service>
+            <service>/planning/cooperate_commands/lane_change_left</service>
+            <service>/planning/cooperate_commands/lane_change_right</service>
+            <service>/planning/cooperate_commands/no_stopping_area</service>
+            <service>/planning/cooperate_commands/occlusion_spot</service>
+            <service>/planning/cooperate_commands/start_planner</service>
+            <service>/planning/cooperate_commands/traffic_light</service>
+            <service>/planning/cooperate_commands/virtual_traffic_light</service>
+            <service>/planning/enable_auto_mode/avoidance_by_lane_change_left</service>
+            <service>/planning/enable_auto_mode/avoidance_by_lane_change_right</service>
+            <service>/planning/enable_auto_mode/avoidance_left</service>
+            <service>/planning/enable_auto_mode/avoidance_right</service>
+            <service>/planning/enable_auto_mode/blind_spot</service>
+            <service>/planning/enable_auto_mode/crosswalk</service>
+            <service>/planning/enable_auto_mode/detection_area</service>
+            <service>/planning/enable_auto_mode/external_request_lane_change_left</service>
+            <service>/planning/enable_auto_mode/external_request_lane_change_right</service>
+            <service>/planning/enable_auto_mode/goal_planner</service>
+            <service>/planning/enable_auto_mode/intersection</service>
+            <service>/planning/enable_auto_mode/intersection_occlusion</service>
+            <service>/planning/enable_auto_mode/lane_change_left</service>
+            <service>/planning/enable_auto_mode/lane_change_right</service>
+            <service>/planning/enable_auto_mode/no_stopping_area</service>
+            <service>/planning/enable_auto_mode/occlusion_spot</service>
+            <service>/planning/enable_auto_mode/start_planner</service>
+            <service>/planning/enable_auto_mode/traffic_light</service>
+            <service>/planning/enable_auto_mode/virtual_traffic_light</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/planning/auto_mode_status/avoidance_by_lane_change_left</topic>
+            <topic>/planning/auto_mode_status/avoidance_by_lane_change_right</topic>
+            <topic>/planning/auto_mode_status/avoidance_left</topic>
+            <topic>/planning/auto_mode_status/avoidance_right</topic>
+            <topic>/planning/auto_mode_status/blind_spot</topic>
+            <topic>/planning/auto_mode_status/crosswalk</topic>
+            <topic>/planning/auto_mode_status/detection_area</topic>
+            <topic>/planning/auto_mode_status/external_request_lane_change_left</topic>
+            <topic>/planning/auto_mode_status/external_request_lane_change_right</topic>
+            <topic>/planning/auto_mode_status/goal_planner</topic>
+            <topic>/planning/auto_mode_status/intersection</topic>
+            <topic>/planning/auto_mode_status/intersection_occlusion</topic>
+            <topic>/planning/auto_mode_status/lane_change_left</topic>
+            <topic>/planning/auto_mode_status/lane_change_right</topic>
+            <topic>/planning/auto_mode_status/no_stopping_area</topic>
+            <topic>/planning/auto_mode_status/occlusion_spot</topic>
+            <topic>/planning/auto_mode_status/start_planner</topic>
+            <topic>/planning/auto_mode_status/traffic_light</topic>
+            <topic>/planning/auto_mode_status/virtual_traffic_light</topic>
+            <topic>/planning/cooperate_status/avoidance_by_lane_change_left</topic>
+            <topic>/planning/cooperate_status/avoidance_by_lane_change_right</topic>
+            <topic>/planning/cooperate_status/avoidance_left</topic>
+            <topic>/planning/cooperate_status/avoidance_right</topic>
+            <topic>/planning/cooperate_status/blind_spot</topic>
+            <topic>/planning/cooperate_status/crosswalk</topic>
+            <topic>/planning/cooperate_status/detection_area</topic>
+            <topic>/planning/cooperate_status/external_request_lane_change_left</topic>
+            <topic>/planning/cooperate_status/external_request_lane_change_right</topic>
+            <topic>/planning/cooperate_status/goal_planner</topic>
+            <topic>/planning/cooperate_status/intersection</topic>
+            <topic>/planning/cooperate_status/intersection_occlusion</topic>
+            <topic>/planning/cooperate_status/lane_change_left</topic>
+            <topic>/planning/cooperate_status/lane_change_right</topic>
+            <topic>/planning/cooperate_status/no_stopping_area</topic>
+            <topic>/planning/cooperate_status/occlusion_spot</topic>
+            <topic>/planning/cooperate_status/start_planner</topic>
+            <topic>/planning/cooperate_status/traffic_light</topic>
+            <topic>/planning/cooperate_status/virtual_traffic_light</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/api/external/get/rtc_auto_mode</topic>
+            <topic>/api/external/get/rtc_status</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="controller_node_exe" ns="/control/trajectory_follower">
+          <services reply="ALLOW">
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/acceleration</topic>
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/planning/scenario_planning/trajectory</topic>
+            <topic>/system/operation_mode/state</topic>
+            <topic>/vehicle/status/steering_status</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>control_cmd</topic>
+            <topic>lateral/diagnostic</topic>
+            <topic>lateral/predicted_trajectory</topic>
+            <topic>longitudinal/diagnostic</topic>
+            <topic>longitudinal/slope_angle</topic>
+            <topic>~/lateral/debug/processing_time_ms</topic>
+            <topic>~/longitudinal/debug/processing_time_ms</topic>
+            <topic>~/output/debug_marker</topic>
+            <topic>~/output/estimated_steer_offset</topic>
+          </topics>
+        </profile>
+        <profile node="lane_departure_checker_node" ns="/control/trajectory_follower">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/kinematic_state</topic>
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+            <topic>/planning/mission_planning/route</topic>
+            <topic>/planning/scenario_planning/trajectory</topic>
+            <topic>lateral/predicted_trajectory</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>~/debug/processing_time_ms</topic>
+          </topics>
+        </profile>
+        <profile node="control_container" ns="/control">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="control_validator" ns="/control">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/planning/scenario_planning/trajectory</topic>
+            <topic>trajectory_follower/lateral/predicted_trajectory</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>~/debug/marker</topic>
+            <topic>~/output/markers</topic>
+            <topic>~/validation_status</topic>
+            <topic>~/virtual_wall</topic>
+          </topics>
+        </profile>
+        <profile node="external_cmd_converter" ns="/control">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/external/selected/external_control_cmd</topic>
+            <topic>/external/selected/gear_cmd</topic>
+            <topic>/external/selected/heartbeat</topic>
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>current_gate_mode</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/api/external/get/command/selected/control</topic>
+            <topic>/diagnostics</topic>
+            <topic>/external/selected/control_cmd</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="external_cmd_selector" ns="/control">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/select_external_command</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/api/external/set/command/local/control</topic>
+            <topic>/api/external/set/command/local/heartbeat</topic>
+            <topic>/api/external/set/command/local/shift</topic>
+            <topic>/api/external/set/command/local/turn_signal</topic>
+            <topic>/api/external/set/command/remote/control</topic>
+            <topic>/api/external/set/command/remote/heartbeat</topic>
+            <topic>/api/external/set/command/remote/shift</topic>
+            <topic>/api/external/set/command/remote/turn_signal</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/external/selected/external_control_cmd</topic>
+            <topic>/external/selected/gear_cmd</topic>
+            <topic>/external/selected/hazard_lights_cmd</topic>
+            <topic>/external/selected/heartbeat</topic>
+            <topic>/external/selected/turn_indicators_cmd</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>~/current_selector_mode</topic>
+          </topics>
+        </profile>
+        <profile node="glog_component" ns="/control">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="operation_mode_transition_manager" ns="/control">
+          <services reply="ALLOW">
+            <service>/system/operation_mode/change_autoware_control</service>
+            <service>/system/operation_mode/change_operation_mode</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <services request="ALLOW">
+            <service>control_mode_request</service>
+            <service>external_cmd_selector/select_external_command</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/api/autoware/get/engage</topic>
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/planning/scenario_planning/trajectory</topic>
+            <topic>/vehicle/status/control_mode</topic>
+            <topic>command/control_cmd</topic>
+            <topic>current_gate_mode</topic>
+            <topic>external_cmd_selector/current_selector_mode</topic>
+            <topic>trajectory_follower/control_cmd</topic>
+            <topic>vehicle_cmd_gate/operation_mode</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/autoware/engage</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>/service_log</topic>
+            <topic>/system/operation_mode/state</topic>
+            <topic>gate_mode_cmd</topic>
+            <topic>~/debug_info</topic>
+          </topics>
+        </profile>
+        <profile node="shift_decider" ns="/control">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/autoware/state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/vehicle/status/gear_status</topic>
+            <topic>trajectory_follower/control_cmd</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>~/gear_cmd</topic>
+          </topics>
+        </profile>
+        <profile node="vehicle_cmd_gate" ns="/control">
+          <services reply="ALLOW">
+            <service>/api/autoware/set/emergency</service>
+            <service>/api/autoware/set/engage</service>
+            <service>~/clear_external_emergency_stop</service>
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/external_emergency_stop</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+            <service>~/set_pause</service>
+            <service>~/set_stop</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/autoware/engage</topic>
+            <topic>/external/selected/control_cmd</topic>
+            <topic>/external/selected/gear_cmd</topic>
+            <topic>/external/selected/hazard_lights_cmd</topic>
+            <topic>/external/selected/heartbeat</topic>
+            <topic>/external/selected/turn_indicators_cmd</topic>
+            <topic>/localization/acceleration</topic>
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/planning/hazard_lights_cmd</topic>
+            <topic>/planning/turn_indicators_cmd</topic>
+            <topic>/system/emergency/control_cmd</topic>
+            <topic>/system/emergency/gear_cmd</topic>
+            <topic>/system/emergency/hazard_lights_cmd</topic>
+            <topic>/system/fail_safe/mrm_state</topic>
+            <topic>/system/operation_mode/state</topic>
+            <topic>/vehicle/status/steering_status</topic>
+            <topic>gate_mode_cmd</topic>
+            <topic>shift_decider/gear_cmd</topic>
+            <topic>trajectory_follower/control_cmd</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/api/autoware/get/emergency</topic>
+            <topic>/api/autoware/get/engage</topic>
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>/service_log</topic>
+            <topic>command/control_cmd</topic>
+            <topic>command/emergency_cmd</topic>
+            <topic>command/gear_cmd</topic>
+            <topic>command/hazard_lights_cmd</topic>
+            <topic>command/turn_indicators_cmd</topic>
+            <topic>current_gate_mode</topic>
+            <topic>~/is_filter_activated</topic>
+            <topic>~/is_filter_activated/flag</topic>
+            <topic>~/is_filter_activated/marker</topic>
+            <topic>~/is_filter_activated/marker_raw</topic>
+            <topic>~/is_paused</topic>
+            <topic>~/is_start_requested</topic>
+            <topic>~/is_stopped</topic>
+            <topic>~/operation_mode</topic>
+          </topics>
+        </profile>
+        <profile node="initial_pose_adaptor" ns="/default_ad_api/helpers">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <services request="ALLOW">
+            <service>/api/localization/initialize</service>
+            <service>/map/get_partial_pointcloud_map</service>
+            <service>/map/pointcloud_map_loader/describe_parameters</service>
+            <service>/map/pointcloud_map_loader/get_parameter_types</service>
+            <service>/map/pointcloud_map_loader/get_parameters</service>
+            <service>/map/pointcloud_map_loader/list_parameters</service>
+            <service>/map/pointcloud_map_loader/set_parameters</service>
+            <service>/map/pointcloud_map_loader/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/initialpose</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>/service_log</topic>
+          </topics>
+        </profile>
+        <profile node="routing_adaptor" ns="/default_ad_api/helpers">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <services request="ALLOW">
+            <service>/api/routing/change_route_points</service>
+            <service>/api/routing/clear_route</service>
+            <service>/api/routing/set_route_points</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/api/routing/state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/planning/mission_planning/checkpoint</topic>
+            <topic>/planning/mission_planning/goal</topic>
+            <topic>/rviz/routing/reroute</topic>
+            <topic>/rviz/routing/rough_goal</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>/service_log</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_5b11d19605a8" ns="/default_ad_api/helpers">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="autoware_state" ns="/default_ad_api/node">
+          <services reply="ALLOW">
+            <service>/autoware/shutdown</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/api/localization/initialization_state</topic>
+            <topic>/api/operation_mode/state</topic>
+            <topic>/api/routing/state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/system/component_state_monitor/component/launch/control</topic>
+            <topic>/system/component_state_monitor/component/launch/localization</topic>
+            <topic>/system/component_state_monitor/component/launch/map</topic>
+            <topic>/system/component_state_monitor/component/launch/perception</topic>
+            <topic>/system/component_state_monitor/component/launch/planning</topic>
+            <topic>/system/component_state_monitor/component/launch/sensing</topic>
+            <topic>/system/component_state_monitor/component/launch/system</topic>
+            <topic>/system/component_state_monitor/component/launch/vehicle</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/autoware/state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="fail_safe" ns="/default_ad_api/node">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/system/fail_safe/mrm_state</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/api/fail_safe/mrm_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="interface" ns="/default_ad_api/node">
+          <services reply="ALLOW">
+            <service>/api/interface/version</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>/service_log</topic>
+          </topics>
+        </profile>
+        <profile node="localization" ns="/default_ad_api/node">
+          <services reply="ALLOW">
+            <service>/api/localization/initialize</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <services request="ALLOW">
+            <service>/localization/initialize</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/initialization_state</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/api/localization/initialization_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>/service_log</topic>
+          </topics>
+        </profile>
+        <profile node="motion" ns="/default_ad_api/node">
+          <services reply="ALLOW">
+            <service>/api/motion/accept_start</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <services request="ALLOW">
+            <service>/control/vehicle_cmd_gate/set_pause</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/control/vehicle_cmd_gate/is_paused</topic>
+            <topic>/control/vehicle_cmd_gate/is_start_requested</topic>
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/api/motion/state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>/service_log</topic>
+          </topics>
+        </profile>
+        <profile node="operation_mode" ns="/default_ad_api/node">
+          <services reply="ALLOW">
+            <service>/api/operation_mode/change_to_autonomous</service>
+            <service>/api/operation_mode/change_to_local</service>
+            <service>/api/operation_mode/change_to_remote</service>
+            <service>/api/operation_mode/change_to_stop</service>
+            <service>/api/operation_mode/disable_autoware_control</service>
+            <service>/api/operation_mode/enable_autoware_control</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <services request="ALLOW">
+            <service>/system/operation_mode/change_autoware_control</service>
+            <service>/system/operation_mode/change_operation_mode</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/system/component_state_monitor/component/autonomous/control</topic>
+            <topic>/system/component_state_monitor/component/autonomous/localization</topic>
+            <topic>/system/component_state_monitor/component/autonomous/map</topic>
+            <topic>/system/component_state_monitor/component/autonomous/perception</topic>
+            <topic>/system/component_state_monitor/component/autonomous/planning</topic>
+            <topic>/system/component_state_monitor/component/autonomous/sensing</topic>
+            <topic>/system/component_state_monitor/component/autonomous/system</topic>
+            <topic>/system/component_state_monitor/component/autonomous/vehicle</topic>
+            <topic>/system/operation_mode/state</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/api/operation_mode/state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>/service_log</topic>
+          </topics>
+        </profile>
+        <profile node="perception" ns="/default_ad_api/node">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/objects</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/api/perception/objects</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="planning" ns="/default_ad_api/node">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/planning/scenario_planning/trajectory</topic>
+            <topic>/planning/steering_factor/avoidance</topic>
+            <topic>/planning/steering_factor/goal_planner</topic>
+            <topic>/planning/steering_factor/intersection</topic>
+            <topic>/planning/steering_factor/lane_change</topic>
+            <topic>/planning/steering_factor/start_planner</topic>
+            <topic>/planning/velocity_factors/blind_spot</topic>
+            <topic>/planning/velocity_factors/crosswalk</topic>
+            <topic>/planning/velocity_factors/detection_area</topic>
+            <topic>/planning/velocity_factors/intersection</topic>
+            <topic>/planning/velocity_factors/merge_from_private</topic>
+            <topic>/planning/velocity_factors/no_stopping_area</topic>
+            <topic>/planning/velocity_factors/obstacle_cruise</topic>
+            <topic>/planning/velocity_factors/obstacle_stop</topic>
+            <topic>/planning/velocity_factors/occlusion_spot</topic>
+            <topic>/planning/velocity_factors/stop_line</topic>
+            <topic>/planning/velocity_factors/surround_obstacle</topic>
+            <topic>/planning/velocity_factors/traffic_light</topic>
+            <topic>/planning/velocity_factors/virtual_traffic_light</topic>
+            <topic>/planning/velocity_factors/walkway</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/api/planning/steering_factors</topic>
+            <topic>/api/planning/velocity_factors</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="routing" ns="/default_ad_api/node">
+          <services reply="ALLOW">
+            <service>/api/routing/change_route</service>
+            <service>/api/routing/change_route_points</service>
+            <service>/api/routing/clear_route</service>
+            <service>/api/routing/set_route</service>
+            <service>/api/routing/set_route_points</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <services request="ALLOW">
+            <service>/planning/mission_planning/change_route</service>
+            <service>/planning/mission_planning/change_route_points</service>
+            <service>/planning/mission_planning/clear_route</service>
+            <service>/planning/mission_planning/set_route</service>
+            <service>/planning/mission_planning/set_route_points</service>
+            <service>/system/operation_mode/change_operation_mode</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/planning/mission_planning/route</topic>
+            <topic>/planning/mission_planning/route_state</topic>
+            <topic>/system/operation_mode/state</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/api/routing/route</topic>
+            <topic>/api/routing/state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>/service_log</topic>
+          </topics>
+        </profile>
+        <profile node="vehicle" ns="/default_ad_api/node">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/acceleration</topic>
+            <topic>/localization/kinematic_state</topic>
+            <topic>/map/map_projector_info</topic>
+            <topic>/parameter_events</topic>
+            <topic>/vehicle/status/battery_charge</topic>
+            <topic>/vehicle/status/gear_status</topic>
+            <topic>/vehicle/status/hazard_lights_status</topic>
+            <topic>/vehicle/status/steering_status</topic>
+            <topic>/vehicle/status/turn_indicators_status</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/api/vehicle/kinematics</topic>
+            <topic>/api/vehicle/status</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="vehicle_info" ns="/default_ad_api/node">
+          <services reply="ALLOW">
+            <service>/api/vehicle/dimensions</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>/service_log</topic>
+          </topics>
+        </profile>
+        <profile node="container" ns="/default_ad_api">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="web_server" ns="/default_ad_api">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <services request="ALLOW">
+            <service>/api/interface/version</service>
+          </services>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="launch_ros_5056" ns="/">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <services request="ALLOW">
+            <service>/autoware_api/external/rtc_controller/container/_container/load_node</service>
+            <service>/control/control_container/_container/load_node</service>
+            <service>/default_ad_api/container/_container/load_node</service>
+            <service>/map/map_container/_container/load_node</service>
+            <service>/occupancy_grid_map/occupancy_grid_map_container/_container/load_node</service>
+            <service>/perception/traffic_light_recognition/traffic_light_arbiter/container/_container/load_node</service>
+            <service>/planning/mission_planning/mission_planner_container/_container/load_node</service>
+            <service>/planning/scenario_planning/lane_driving/behavior_planning/behavior_planning_container/_container/load_node</service>
+            <service>/planning/scenario_planning/lane_driving/motion_planning/motion_planning_container/_container/load_node</service>
+            <service>/planning/scenario_planning/motion_velocity_smoother_container/_container/load_node</service>
+            <service>/planning/scenario_planning/parking/parking_container/_container/load_node</service>
+            <service>/system/component_state_monitor/container/_container/load_node</service>
+            <service>/system/mrm_comfortable_stop_operator/mrm_comfortable_stop_operator_container/_container/load_node</service>
+            <service>/system/mrm_emergency_stop_operator/mrm_emergency_stop_operator_container/_container/load_node</service>
+          </services>
+          <topics publish="ALLOW">
+            <topic>parameter_events</topic>
+            <topic>rosout</topic>
+          </topics>
+        </profile>
+        <profile node="lanelet2_map_loader" ns="/map">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>map_projector_info</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>vector_map</topic>
+          </topics>
+        </profile>
+        <profile node="lanelet2_map_visualization" ns="/map">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>vector_map</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>vector_map_marker</topic>
+          </topics>
+        </profile>
+        <profile node="map_container" ns="/map">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="map_hash_generator" ns="/map">
+          <services reply="ALLOW">
+            <service>/api/autoware/get/map/lanelet/xml</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics publish="ALLOW">
+            <topic>/api/autoware/get/map/info/hash</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="map_projection_loader" ns="/map">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>map_projector_info</topic>
+          </topics>
+        </profile>
+        <profile node="pointcloud_map_loader" ns="/map">
+          <services reply="ALLOW">
+            <service>get_differential_pointcloud_map</service>
+            <service>get_partial_pointcloud_map</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>pointcloud_map</topic>
+          </topics>
+        </profile>
+        <profile node="vector_map_tf_generator" ns="/map">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>vector_map</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>/tf_static</topic>
+          </topics>
+        </profile>
+        <profile node="occupancy_grid_map_container" ns="/occupancy_grid_map">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="occupancy_grid_map_node" ns="/occupancy_grid_map">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/perception/obstacle_segmentation/pointcloud</topic>
+            <topic>no_ground/oneshot/pointcloud</topic>
+            <topic>virtual_scan/laserscan</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/perception/occupancy_grid_map/map</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="pointcloud_to_laserscan_node" ns="/occupancy_grid_map">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/perception/obstacle_segmentation/pointcloud</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>virtual_scan/laserscan</topic>
+            <topic>virtual_scan/pointcloud</topic>
+            <topic>virtual_scan/ray</topic>
+            <topic>virtual_scan/stixel</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_58f205d04dc0" ns="/occupancy_grid_map">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_58f205d6a680" ns="/occupancy_grid_map">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="map_based_prediction" ns="/perception/object_recognition/prediction">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/tracking/objects</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/objects</topic>
+            <topic>/rosout</topic>
+            <topic>maneuver</topic>
+            <topic>~/debug/calculation_time</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_60cc12519480" ns="/perception/object_recognition/prediction">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="multi_object_tracker" ns="/perception/object_recognition/tracking">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/detection/objects</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>objects</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_5b6b36f2a6b0" ns="/perception/object_recognition/tracking">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="traffic_light_occlusion_predictor" ns="/perception/traffic_light_recognition/camera6/classification">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+            <topic>/perception/traffic_light_recognition/camera6/detection/rois</topic>
+            <topic>/sensing/camera/camera6/camera_info</topic>
+            <topic>/sensing/lidar/top/pointcloud_raw</topic>
+            <topic>classified/traffic_signals</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>traffic_signals</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_621ffb46dc98" ns="/perception/traffic_light_recognition/camera6/classification">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="arbiter" ns="/perception/traffic_light_recognition/traffic_light_arbiter">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+            <topic>/perception/traffic_light_recognition/external/traffic_signals</topic>
+            <topic>/perception/traffic_light_recognition/internal/traffic_signals</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/perception/traffic_light_recognition/traffic_signals</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="container" ns="/perception/traffic_light_recognition/traffic_light_arbiter">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="crosswalk_traffic_light_estimator" ns="/perception/traffic_light_recognition">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+            <topic>/planning/mission_planning/route</topic>
+            <topic>fusion/traffic_signals</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>internal/traffic_signals</topic>
+          </topics>
+        </profile>
+        <profile node="traffic_light_map_visualizer" ns="/perception/traffic_light_recognition">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+            <topic>traffic_signals</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>traffic_signals/markers</topic>
+          </topics>
+        </profile>
+        <profile node="traffic_light_multi_camera_fusion" ns="/perception/traffic_light_recognition">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+            <topic>camera6/camera_info</topic>
+            <topic>camera6/classification/traffic_signals</topic>
+            <topic>camera6/detection/rois</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>fusion/traffic_signals</topic>
+          </topics>
+        </profile>
+        <profile node="glog_component" ns="/planning/mission_planning">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="goal_pose_visualizer" ns="/planning/mission_planning">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>route</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>echo_back_goal_pose</topic>
+          </topics>
+        </profile>
+        <profile node="mission_planner" ns="/planning/mission_planning">
+          <services reply="ALLOW">
+            <service>change_route</service>
+            <service>change_route_points</service>
+            <service>clear_route</service>
+            <service>set_route</service>
+            <service>set_route_points</service>
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+            <service>~/srv/clear_mrm_route</service>
+            <service>~/srv/set_mrm_route</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/kinematic_state</topic>
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/output/is_reroute_available</topic>
+            <topic>/planning/scenario_planning/modified_goal</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>/service_log</topic>
+            <topic>debug/goal_footprint</topic>
+            <topic>mrm_route</topic>
+            <topic>normal_route</topic>
+            <topic>route</topic>
+            <topic>route_marker</topic>
+            <topic>route_state</topic>
+          </topics>
+        </profile>
+        <profile node="mission_planner_container" ns="/planning/mission_planning">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_5da6da473b80" ns="/planning/mission_planning">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="behavior_path_planner" ns="/planning/scenario_planning/lane_driving/behavior_planning">
+          <services reply="ALLOW">
+            <service>/planning/cooperate_commands/avoidance_by_lc</service>
+            <service>/planning/cooperate_commands/avoidance_by_lc_left</service>
+            <service>/planning/cooperate_commands/avoidance_by_lc_right</service>
+            <service>/planning/cooperate_commands/avoidance_left</service>
+            <service>/planning/cooperate_commands/avoidance_right</service>
+            <service>/planning/cooperate_commands/goal_planner</service>
+            <service>/planning/cooperate_commands/lane_change_left</service>
+            <service>/planning/cooperate_commands/lane_change_right</service>
+            <service>/planning/cooperate_commands/start_planner</service>
+            <service>/planning/enable_auto_mode/avoidance_by_lc</service>
+            <service>/planning/enable_auto_mode/avoidance_by_lc_left</service>
+            <service>/planning/enable_auto_mode/avoidance_by_lc_right</service>
+            <service>/planning/enable_auto_mode/avoidance_left</service>
+            <service>/planning/enable_auto_mode/avoidance_right</service>
+            <service>/planning/enable_auto_mode/goal_planner</service>
+            <service>/planning/enable_auto_mode/lane_change_left</service>
+            <service>/planning/enable_auto_mode/lane_change_right</service>
+            <service>/planning/enable_auto_mode/start_planner</service>
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/acceleration</topic>
+            <topic>/localization/kinematic_state</topic>
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/objects</topic>
+            <topic>/perception/occupancy_grid_map/map</topic>
+            <topic>/perception/traffic_light_recognition/traffic_signals</topic>
+            <topic>/planning/mission_planning/route</topic>
+            <topic>/planning/scenario_planning/parking/costmap_generator/occupancy_grid</topic>
+            <topic>/planning/scenario_planning/scenario</topic>
+            <topic>/system/operation_mode/state</topic>
+            <topic>~/input/lateral_offset</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/planning/auto_mode_status/avoidance_by_lc</topic>
+            <topic>/planning/auto_mode_status/avoidance_by_lc_left</topic>
+            <topic>/planning/auto_mode_status/avoidance_by_lc_right</topic>
+            <topic>/planning/auto_mode_status/avoidance_left</topic>
+            <topic>/planning/auto_mode_status/avoidance_right</topic>
+            <topic>/planning/auto_mode_status/goal_planner</topic>
+            <topic>/planning/auto_mode_status/lane_change_left</topic>
+            <topic>/planning/auto_mode_status/lane_change_right</topic>
+            <topic>/planning/auto_mode_status/start_planner</topic>
+            <topic>/planning/cooperate_status/avoidance_by_lc</topic>
+            <topic>/planning/cooperate_status/avoidance_by_lc_left</topic>
+            <topic>/planning/cooperate_status/avoidance_by_lc_right</topic>
+            <topic>/planning/cooperate_status/avoidance_left</topic>
+            <topic>/planning/cooperate_status/avoidance_right</topic>
+            <topic>/planning/cooperate_status/goal_planner</topic>
+            <topic>/planning/cooperate_status/lane_change_left</topic>
+            <topic>/planning/cooperate_status/lane_change_right</topic>
+            <topic>/planning/cooperate_status/start_planner</topic>
+            <topic>/planning/debug/objects_of_interest/avoidance_by_lc</topic>
+            <topic>/planning/debug/objects_of_interest/avoidance_by_lc_left</topic>
+            <topic>/planning/debug/objects_of_interest/avoidance_by_lc_right</topic>
+            <topic>/planning/debug/objects_of_interest/avoidance_left</topic>
+            <topic>/planning/debug/objects_of_interest/avoidance_right</topic>
+            <topic>/planning/debug/objects_of_interest/goal_planner</topic>
+            <topic>/planning/debug/objects_of_interest/lane_change_left</topic>
+            <topic>/planning/debug/objects_of_interest/lane_change_right</topic>
+            <topic>/planning/debug/objects_of_interest/start_planner</topic>
+            <topic>/planning/hazard_lights_cmd</topic>
+            <topic>/planning/path_candidate/avoidance</topic>
+            <topic>/planning/path_candidate/avoidance_by_lc</topic>
+            <topic>/planning/path_candidate/goal_planner</topic>
+            <topic>/planning/path_candidate/lane_change_left</topic>
+            <topic>/planning/path_candidate/lane_change_right</topic>
+            <topic>/planning/path_candidate/side_shift</topic>
+            <topic>/planning/path_candidate/start_planner</topic>
+            <topic>/planning/path_reference/avoidance</topic>
+            <topic>/planning/path_reference/avoidance_by_lc</topic>
+            <topic>/planning/path_reference/goal_planner</topic>
+            <topic>/planning/path_reference/lane_change_left</topic>
+            <topic>/planning/path_reference/lane_change_right</topic>
+            <topic>/planning/path_reference/side_shift</topic>
+            <topic>/planning/path_reference/start_planner</topic>
+            <topic>/planning/scenario_planning/modified_goal</topic>
+            <topic>/planning/scenario_planning/status/stop_reasons</topic>
+            <topic>/planning/steering_factor/intersection</topic>
+            <topic>/planning/turn_indicators_cmd</topic>
+            <topic>/rosout</topic>
+            <topic>path_with_lane_id</topic>
+            <topic>~/debug/avoidance</topic>
+            <topic>~/debug/avoidance_by_lc</topic>
+            <topic>~/debug/avoidance_debug_message_array</topic>
+            <topic>~/debug/bound</topic>
+            <topic>~/debug/goal_planner</topic>
+            <topic>~/debug/lane_change_left</topic>
+            <topic>~/debug/lane_change_right</topic>
+            <topic>~/debug/side_shift</topic>
+            <topic>~/debug/start_planner</topic>
+            <topic>~/debug/turn_signal_info</topic>
+            <topic>~/drivable_lanes/avoidance</topic>
+            <topic>~/drivable_lanes/avoidance_by_lc</topic>
+            <topic>~/drivable_lanes/goal_planner</topic>
+            <topic>~/drivable_lanes/lane_change_left</topic>
+            <topic>~/drivable_lanes/lane_change_right</topic>
+            <topic>~/drivable_lanes/side_shift</topic>
+            <topic>~/drivable_lanes/start_planner</topic>
+            <topic>~/info/avoidance</topic>
+            <topic>~/info/avoidance_by_lc</topic>
+            <topic>~/info/goal_planner</topic>
+            <topic>~/info/lane_change_left</topic>
+            <topic>~/info/lane_change_right</topic>
+            <topic>~/info/side_shift</topic>
+            <topic>~/info/start_planner</topic>
+            <topic>~/maximum_drivable_area</topic>
+            <topic>~/output/is_reroute_available</topic>
+            <topic>~/virtual_wall/avoidance</topic>
+            <topic>~/virtual_wall/avoidance_by_lc</topic>
+            <topic>~/virtual_wall/goal_planner</topic>
+            <topic>~/virtual_wall/lane_change_left</topic>
+            <topic>~/virtual_wall/lane_change_right</topic>
+            <topic>~/virtual_wall/side_shift</topic>
+            <topic>~/virtual_wall/start_planner</topic>
+          </topics>
+        </profile>
+        <profile node="behavior_planning_container" ns="/planning/scenario_planning/lane_driving/behavior_planning">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="behavior_velocity_planner" ns="/planning/scenario_planning/lane_driving/behavior_planning">
+          <services reply="ALLOW">
+            <service>/planning/cooperate_commands/blind_spot</service>
+            <service>/planning/cooperate_commands/crosswalk</service>
+            <service>/planning/cooperate_commands/detection_area</service>
+            <service>/planning/cooperate_commands/intersection</service>
+            <service>/planning/cooperate_commands/intersection_occlusion</service>
+            <service>/planning/cooperate_commands/no_stopping_area</service>
+            <service>/planning/cooperate_commands/traffic_light</service>
+            <service>/planning/enable_auto_mode/blind_spot</service>
+            <service>/planning/enable_auto_mode/crosswalk</service>
+            <service>/planning/enable_auto_mode/detection_area</service>
+            <service>/planning/enable_auto_mode/intersection</service>
+            <service>/planning/enable_auto_mode/intersection_occlusion</service>
+            <service>/planning/enable_auto_mode/no_stopping_area</service>
+            <service>/planning/enable_auto_mode/traffic_light</service>
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/service/load_plugin</service>
+            <service>~/service/unload_plugin</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/awapi/tmp/virtual_traffic_light_states</topic>
+            <topic>/localization/acceleration</topic>
+            <topic>/localization/kinematic_state</topic>
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/objects</topic>
+            <topic>/perception/obstacle_segmentation/pointcloud</topic>
+            <topic>/perception/occupancy_grid_map/map</topic>
+            <topic>/perception/traffic_light_recognition/traffic_signals</topic>
+            <topic>/planning/scenario_planning/max_velocity_default</topic>
+            <topic>path_with_lane_id</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/planning/auto_mode_status/blind_spot</topic>
+            <topic>/planning/auto_mode_status/crosswalk</topic>
+            <topic>/planning/auto_mode_status/detection_area</topic>
+            <topic>/planning/auto_mode_status/intersection</topic>
+            <topic>/planning/auto_mode_status/intersection_occlusion</topic>
+            <topic>/planning/auto_mode_status/no_stopping_area</topic>
+            <topic>/planning/auto_mode_status/traffic_light</topic>
+            <topic>/planning/cooperate_status/blind_spot</topic>
+            <topic>/planning/cooperate_status/crosswalk</topic>
+            <topic>/planning/cooperate_status/detection_area</topic>
+            <topic>/planning/cooperate_status/intersection</topic>
+            <topic>/planning/cooperate_status/intersection_occlusion</topic>
+            <topic>/planning/cooperate_status/no_stopping_area</topic>
+            <topic>/planning/cooperate_status/traffic_light</topic>
+            <topic>/planning/debug/objects_of_interest/blind_spot</topic>
+            <topic>/planning/debug/objects_of_interest/crosswalk</topic>
+            <topic>/planning/debug/objects_of_interest/detection_area</topic>
+            <topic>/planning/debug/objects_of_interest/intersection</topic>
+            <topic>/planning/debug/objects_of_interest/no_stopping_area</topic>
+            <topic>/planning/debug/objects_of_interest/traffic_light</topic>
+            <topic>/planning/scenario_planning/status/infrastructure_commands</topic>
+            <topic>/planning/scenario_planning/status/stop_reasons</topic>
+            <topic>/planning/velocity_factors/blind_spot</topic>
+            <topic>/planning/velocity_factors/crosswalk</topic>
+            <topic>/planning/velocity_factors/detection_area</topic>
+            <topic>/planning/velocity_factors/intersection</topic>
+            <topic>/planning/velocity_factors/merge_from_private</topic>
+            <topic>/planning/velocity_factors/no_stopping_area</topic>
+            <topic>/planning/velocity_factors/out_of_lane</topic>
+            <topic>/planning/velocity_factors/run_out</topic>
+            <topic>/planning/velocity_factors/stop_line</topic>
+            <topic>/planning/velocity_factors/traffic_light</topic>
+            <topic>/planning/velocity_factors/walkway</topic>
+            <topic>/rosout</topic>
+            <topic>debug/traffic_signal</topic>
+            <topic>path</topic>
+            <topic>~/debug/blind_spot</topic>
+            <topic>~/debug/crosswalk</topic>
+            <topic>~/debug/detection_area</topic>
+            <topic>~/debug/intersection</topic>
+            <topic>~/debug/merge_from_private</topic>
+            <topic>~/debug/no_stopping_area</topic>
+            <topic>~/debug/out_of_lane</topic>
+            <topic>~/debug/path</topic>
+            <topic>~/debug/run_out</topic>
+            <topic>~/debug/run_out/accel_reason</topic>
+            <topic>~/debug/run_out/debug_values</topic>
+            <topic>~/debug/run_out/filtered_pointcloud</topic>
+            <topic>~/debug/stop_line</topic>
+            <topic>~/debug/traffic_light</topic>
+            <topic>~/debug/walkway</topic>
+            <topic>~/output/stop_reason</topic>
+            <topic>~/virtual_wall/blind_spot</topic>
+            <topic>~/virtual_wall/crosswalk</topic>
+            <topic>~/virtual_wall/detection_area</topic>
+            <topic>~/virtual_wall/intersection</topic>
+            <topic>~/virtual_wall/merge_from_private</topic>
+            <topic>~/virtual_wall/no_stopping_area</topic>
+            <topic>~/virtual_wall/out_of_lane</topic>
+            <topic>~/virtual_wall/run_out</topic>
+            <topic>~/virtual_wall/stop_line</topic>
+            <topic>~/virtual_wall/traffic_light</topic>
+            <topic>~/virtual_wall/walkway</topic>
+          </topics>
+        </profile>
+        <profile node="glog_component" ns="/planning/scenario_planning/lane_driving/behavior_planning">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_7e3374027b28" ns="/planning/scenario_planning/lane_driving/behavior_planning">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="elastic_band_smoother" ns="/planning/scenario_planning/lane_driving/motion_planning">
+          <services reply="ALLOW">
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/path</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>path_smoother/path</topic>
+            <topic>~/debug/calculation_time</topic>
+            <topic>~/debug/eb_fixed_traj</topic>
+            <topic>~/debug/eb_traj</topic>
+            <topic>~/debug/extended_traj</topic>
+            <topic>~/debug/processing_time_ms</topic>
+            <topic>~/output/traj</topic>
+          </topics>
+        </profile>
+        <profile node="glog_component" ns="/planning/scenario_planning/lane_driving/motion_planning">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="motion_planning_container" ns="/planning/scenario_planning/lane_driving/motion_planning">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="obstacle_avoidance_planner" ns="/planning/scenario_planning/lane_driving/motion_planning">
+          <services reply="ALLOW">
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>path_smoother/path</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>~/debug/calculation_time</topic>
+            <topic>~/debug/extended_traj</topic>
+            <topic>~/debug/marker</topic>
+            <topic>~/debug/mpt_fixed_traj</topic>
+            <topic>~/debug/mpt_ref_traj</topic>
+            <topic>~/debug/mpt_traj</topic>
+            <topic>~/debug/processing_time_ms</topic>
+            <topic>~/trajectory</topic>
+            <topic>~/virtual_wall</topic>
+          </topics>
+        </profile>
+        <profile node="obstacle_stop_planner" ns="/planning/scenario_planning/lane_driving/motion_planning">
+          <services reply="ALLOW">
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/acceleration</topic>
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/objects</topic>
+            <topic>/perception/obstacle_segmentation/pointcloud</topic>
+            <topic>obstacle_velocity_limiter/trajectory</topic>
+            <topic>~/input/expand_stop_range</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/planning/scenario_planning/clear_velocity_limit</topic>
+            <topic>/planning/scenario_planning/lane_driving/trajectory</topic>
+            <topic>/planning/scenario_planning/max_velocity_candidates</topic>
+            <topic>/planning/scenario_planning/status/stop_reasons</topic>
+            <topic>/planning/velocity_factors/obstacle_stop</topic>
+            <topic>/rosout</topic>
+            <topic>~/adaptive_cruise_control/debug_values</topic>
+            <topic>~/debug/collision_pointcloud</topic>
+            <topic>~/debug/marker</topic>
+            <topic>~/debug/obstacle_pointcloud</topic>
+            <topic>~/debug/processing_time_ms</topic>
+            <topic>~/obstacle_stop/debug_values</topic>
+            <topic>~/output/stop_reason</topic>
+            <topic>~/virtual_wall</topic>
+          </topics>
+        </profile>
+        <profile node="obstacle_velocity_limiter" ns="/planning/scenario_planning/lane_driving/motion_planning">
+          <services reply="ALLOW">
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/kinematic_state</topic>
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/objects</topic>
+            <topic>/perception/obstacle_segmentation/pointcloud</topic>
+            <topic>/perception/occupancy_grid_map/map</topic>
+            <topic>obstacle_avoidance_planner/trajectory</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>debug_markers</topic>
+            <topic>~/output/runtime_microseconds</topic>
+            <topic>~/trajectory</topic>
+          </topics>
+        </profile>
+        <profile node="surround_obstacle_checker" ns="/planning/scenario_planning/lane_driving/motion_planning">
+          <services reply="ALLOW">
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/objects</topic>
+            <topic>/perception/obstacle_segmentation/pointcloud</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/planning/scenario_planning/clear_velocity_limit</topic>
+            <topic>/planning/scenario_planning/max_velocity_candidates</topic>
+            <topic>/planning/scenario_planning/status/no_start_reason</topic>
+            <topic>/planning/scenario_planning/status/stop_reasons</topic>
+            <topic>/planning/velocity_factors/surround_obstacle</topic>
+            <topic>/rosout</topic>
+            <topic>~/debug/footprint</topic>
+            <topic>~/debug/footprint_offset</topic>
+            <topic>~/debug/footprint_recover_offset</topic>
+            <topic>~/debug/marker</topic>
+            <topic>~/virtual_wall</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_757da05c8410" ns="/planning/scenario_planning/lane_driving/motion_planning">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_757e0001e070" ns="/planning/scenario_planning/lane_driving/motion_planning">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_757e080667b8" ns="/planning/scenario_planning/lane_driving/motion_planning">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="costmap_generator" ns="/planning/scenario_planning/parking">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="parking_container" ns="/planning/scenario_planning/parking">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_7e0ab0580188" ns="/planning/scenario_planning/parking">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="external_velocity_limit_selector" ns="/planning/scenario_planning">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>clear_velocity_limit</topic>
+            <topic>max_velocity_candidates</topic>
+            <topic>max_velocity_default</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>max_velocity</topic>
+            <topic>~/debug</topic>
+          </topics>
+        </profile>
+        <profile node="glog_component" ns="/planning/scenario_planning">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="motion_velocity_smoother" ns="/planning/scenario_planning">
+          <services reply="ALLOW">
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/acceleration</topic>
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/system/operation_mode/state</topic>
+            <topic>max_velocity</topic>
+            <topic>scenario_selector/trajectory</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>current_max_velocity</topic>
+            <topic>~/closest_acceleration</topic>
+            <topic>~/closest_jerk</topic>
+            <topic>~/closest_max_velocity</topic>
+            <topic>~/closest_merged_velocity</topic>
+            <topic>~/closest_velocity</topic>
+            <topic>~/debug/backward_filtered_trajectory</topic>
+            <topic>~/debug/forward_filtered_trajectory</topic>
+            <topic>~/debug/merged_filtered_trajectory</topic>
+            <topic>~/debug/processing_time_ms</topic>
+            <topic>~/debug/trajectory_external_velocity_limited</topic>
+            <topic>~/debug/trajectory_lateral_acc_filtered</topic>
+            <topic>~/debug/trajectory_raw</topic>
+            <topic>~/debug/trajectory_steering_rate_limited</topic>
+            <topic>~/debug/trajectory_time_resampled</topic>
+            <topic>~/distance_to_stopline</topic>
+            <topic>~/stop_speed_exceeded</topic>
+            <topic>~/trajectory</topic>
+            <topic>~/virtual_wall</topic>
+          </topics>
+        </profile>
+        <profile node="motion_velocity_smoother_container" ns="/planning/scenario_planning">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="scenario_selector" ns="/planning/scenario_planning">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/kinematic_state</topic>
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+            <topic>/planning/mission_planning/route</topic>
+            <topic>lane_driving/trajectory</topic>
+            <topic>parking/is_completed</topic>
+            <topic>parking/trajectory</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>scenario</topic>
+            <topic>~/trajectory</topic>
+          </topics>
+        </profile>
+        <profile node="planning_evaluator" ns="/planning">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/objects</topic>
+            <topic>scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/trajectory</topic>
+            <topic>scenario_planning/modified_goal</topic>
+            <topic>scenario_planning/trajectory</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostic/planning_evaluator/metrics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="planning_validator" ns="/planning">
+          <services reply="ALLOW">
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>scenario_planning/motion_velocity_smoother/trajectory</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>scenario_planning/trajectory</topic>
+            <topic>~/debug/marker</topic>
+            <topic>~/debug/processing_time_ms</topic>
+            <topic>~/output/markers</topic>
+            <topic>~/validation_status</topic>
+            <topic>~/virtual_wall</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_611a5f833a00" ns="/planning">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="pose_initializer_node" ns="/">
+          <services reply="ALLOW">
+            <service>/localization/initialize</service>
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/localization/initialization_state</topic>
+            <topic>initialpose3d</topic>
+            <topic>parameter_events</topic>
+            <topic>rosout</topic>
+            <topic>service_log</topic>
+          </topics>
+        </profile>
+        <profile node="robot_state_publisher" ns="/">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>joint_states</topic>
+            <topic>parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>parameter_events</topic>
+            <topic>robot_description</topic>
+            <topic>rosout</topic>
+            <topic>tf</topic>
+            <topic>tf_static</topic>
+          </topics>
+        </profile>
+        <profile node="rqt_gui_py_node_5307" ns="/">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics publish="ALLOW">
+            <topic>parameter_events</topic>
+            <topic>rosout</topic>
+          </topics>
+        </profile>
+        <profile node="rviz2" ns="/">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <services request="ALLOW">
+            <service>/api/autoware/set/emergency</service>
+            <service>/api/localization/initialize</service>
+            <service>/api/motion/accept_start</service>
+            <service>/api/operation_mode/change_to_autonomous</service>
+            <service>/api/operation_mode/change_to_local</service>
+            <service>/api/operation_mode/change_to_remote</service>
+            <service>/api/operation_mode/change_to_stop</service>
+            <service>/api/operation_mode/disable_autoware_control</service>
+            <service>/api/operation_mode/enable_autoware_control</service>
+            <service>/api/routing/clear_route</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/api/autoware/get/emergency</topic>
+            <topic>/api/fail_safe/mrm_state</topic>
+            <topic>/api/localization/initialization_state</topic>
+            <topic>/api/motion/state</topic>
+            <topic>/api/operation_mode/state</topic>
+            <topic>/api/routing/state</topic>
+            <topic>/control/trajectory_follower/lateral/predicted_trajectory</topic>
+            <topic>/localization/pose_estimator/monte_carlo_initial_pose_marker</topic>
+            <topic>/localization/pose_twist_fusion_filter/pose</topic>
+            <topic>/map/pointcloud_map</topic>
+            <topic>/map/vector_map_marker</topic>
+            <topic>/perception/object_recognition/objects</topic>
+            <topic>/perception/obstacle_segmentation/pointcloud</topic>
+            <topic>/perception/occupancy_grid_map/map_updates</topic>
+            <topic>/perception/traffic_light_recognition/traffic_light/debug/rois</topic>
+            <topic>/perception/traffic_light_recognition/traffic_light_map_based_detector/debug/markers</topic>
+            <topic>/planning/mission_planning/echo_back_goal_pose</topic>
+            <topic>/planning/mission_planning/route_marker</topic>
+            <topic>/planning/path_candidate/avoidance</topic>
+            <topic>/planning/path_candidate/avoidance_by_lane_change</topic>
+            <topic>/planning/path_candidate/external_request_lane_change_left</topic>
+            <topic>/planning/path_candidate/external_request_lane_change_right</topic>
+            <topic>/planning/path_candidate/goal_planner</topic>
+            <topic>/planning/path_candidate/lane_change</topic>
+            <topic>/planning/path_candidate/lane_change_left</topic>
+            <topic>/planning/path_candidate/lane_change_right</topic>
+            <topic>/planning/path_candidate/start_planner</topic>
+            <topic>/planning/scenario_planning/current_max_velocity</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/virtual_wall/avoidance</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/virtual_wall/avoidance_by_lane_change</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/virtual_wall/external_request_lane_change_left</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/virtual_wall/external_request_lane_change_right</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/virtual_wall/goal_planner</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/virtual_wall/lane_change_left</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/virtual_wall/lane_change_right</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/virtual_wall/start_planner</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/blind_spot</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/crosswalk</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/detection_area</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/intersection</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/merge_from_private</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/no_drivable_lane</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/no_stopping_area</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/occlusion_spot</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/out_of_lane</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/run_out</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/speed_bump</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/stop_line</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/traffic_light</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/virtual_traffic_light</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/walkway</topic>
+            <topic>/planning/scenario_planning/lane_driving/behavior_planning/path</topic>
+            <topic>/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/virtual_wall</topic>
+            <topic>/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/virtual_wall</topic>
+            <topic>/planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/virtual_wall</topic>
+            <topic>/planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/virtual_wall</topic>
+            <topic>/planning/scenario_planning/modified_goal</topic>
+            <topic>/planning/scenario_planning/motion_velocity_smoother/virtual_wall</topic>
+            <topic>/planning/scenario_planning/parking/freespace_planner/debug/partial_pose_array</topic>
+            <topic>/planning/scenario_planning/parking/freespace_planner/debug/pose_array</topic>
+            <topic>/planning/scenario_planning/trajectory</topic>
+            <topic>/sensing/lidar/concatenated/pointcloud</topic>
+            <topic>/vehicle/status/gear_status</topic>
+            <topic>/vehicle/status/steering_status</topic>
+            <topic>/vehicle/status/turn_indicators_status</topic>
+            <topic>/vehicle/status/velocity_status</topic>
+            <topic>parameter_events</topic>
+            <topic>robot_description</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/planning/mission_planning/checkpoint</topic>
+            <topic>/planning/mission_planning/goal</topic>
+            <topic>/planning/scenario_planning/max_velocity_default</topic>
+            <topic>/rviz/routing/rough_goal</topic>
+            <topic>/simulation/dummy_perception_publisher/object_info</topic>
+            <topic>initialpose</topic>
+            <topic>parameter_events</topic>
+            <topic>rosout</topic>
+          </topics>
+        </profile>
+        <profile node="detected_object_feature_remover" ns="/simulation">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/detection/objects_with_feature</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/detection/objects</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="dummy_perception_publisher" ns="/simulation">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>~/object_info</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/detection/labeled_clusters</topic>
+            <topic>/perception/obstacle_segmentation/pointcloud</topic>
+            <topic>/rosout</topic>
+            <topic>~/output/debug/ground_truth_objects</topic>
+          </topics>
+        </profile>
+        <profile node="shape_estimation" ns="/simulation">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/detection/labeled_clusters</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/detection/objects_with_feature</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="simple_planning_simulator" ns="/simulation">
+          <services reply="ALLOW">
+            <service>/api/simulator/set/pose</service>
+            <service>/control/control_mode_request</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/control/command/control_cmd</topic>
+            <topic>/control/command/gear_cmd</topic>
+            <topic>/control/command/hazard_lights_cmd</topic>
+            <topic>/control/command/turn_indicators_cmd</topic>
+            <topic>/initialpose3d</topic>
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+            <topic>/planning/scenario_planning/trajectory</topic>
+            <topic>/vehicle/command/manual_control_cmd</topic>
+            <topic>/vehicle/command/manual_gear_command</topic>
+            <topic>/vehicle/engage</topic>
+            <topic>input/initialtwist</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/localization/acceleration</topic>
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>/sensing/imu/imu_data</topic>
+            <topic>/tf</topic>
+            <topic>/vehicle/status/control_mode</topic>
+            <topic>/vehicle/status/gear_status</topic>
+            <topic>/vehicle/status/hazard_lights_status</topic>
+            <topic>/vehicle/status/steering_status</topic>
+            <topic>/vehicle/status/turn_indicators_status</topic>
+            <topic>/vehicle/status/velocity_status</topic>
+            <topic>output/debug/pose</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_5ee6ab176c38" ns="/simulation">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_6522b92688b8" ns="/simulation">
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+            <topic>/tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="static_map_to_odom_tf_publisher" ns="/">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>parameter_events</topic>
+            <topic>rosout</topic>
+            <topic>tf_static</topic>
+          </topics>
+        </profile>
+        <profile node="component" ns="/system/component_state_monitor">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>~/autonomous/control</topic>
+            <topic>~/autonomous/localization</topic>
+            <topic>~/autonomous/map</topic>
+            <topic>~/autonomous/perception</topic>
+            <topic>~/autonomous/planning</topic>
+            <topic>~/autonomous/sensing</topic>
+            <topic>~/autonomous/system</topic>
+            <topic>~/autonomous/vehicle</topic>
+            <topic>~/launch/control</topic>
+            <topic>~/launch/localization</topic>
+            <topic>~/launch/map</topic>
+            <topic>~/launch/perception</topic>
+            <topic>~/launch/planning</topic>
+            <topic>~/launch/sensing</topic>
+            <topic>~/launch/system</topic>
+            <topic>~/launch/vehicle</topic>
+          </topics>
+        </profile>
+        <profile node="container" ns="/system/component_state_monitor">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="mrm_comfortable_stop_operator_container" ns="/system/mrm_comfortable_stop_operator">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="mrm_emergency_stop_operator_container" ns="/system/mrm_emergency_stop_operator">
+          <services reply="ALLOW">
+            <service>~/_container/list_nodes</service>
+            <service>~/_container/load_node</service>
+            <service>~/_container/unload_node</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="duplicated_node_checker" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="emergency_handler" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <services request="ALLOW">
+            <service>mrm/comfortable_stop/operate</service>
+            <service>mrm/emergency_stop/operate</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/control/command/control_cmd</topic>
+            <topic>/localization/kinematic_state</topic>
+            <topic>/parameter_events</topic>
+            <topic>/vehicle/status/control_mode</topic>
+            <topic>emergency/hazard_status</topic>
+            <topic>mrm/comfortable_stop/status</topic>
+            <topic>mrm/emergency_stop/status</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>emergency/gear_cmd</topic>
+            <topic>emergency/hazard_lights_cmd</topic>
+            <topic>fail_safe/mrm_state</topic>
+            <topic>~/output/control_command</topic>
+          </topics>
+        </profile>
+        <profile node="mrm_comfortable_stop_operator" ns="/system">
+          <services reply="ALLOW">
+            <service>mrm/comfortable_stop/operate</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/planning/scenario_planning/clear_velocity_limit</topic>
+            <topic>/planning/scenario_planning/max_velocity_candidates</topic>
+            <topic>/rosout</topic>
+            <topic>mrm/comfortable_stop/status</topic>
+          </topics>
+        </profile>
+        <profile node="mrm_emergency_stop_operator" ns="/system">
+          <services reply="ALLOW">
+            <service>mrm/emergency_stop/operate</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/control/command/control_cmd</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>emergency/control_cmd</topic>
+            <topic>mrm/emergency_stop/status</topic>
+          </topics>
+        </profile>
+        <profile node="service_log_checker" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/service_log</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="system_error_monitor" ns="/system">
+          <services reply="ALLOW">
+            <service>clear_emergency</service>
+            <service>~/config_logger</service>
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/autoware/state</topic>
+            <topic>/control/current_gate_mode</topic>
+            <topic>/diagnostics_agg</topic>
+            <topic>/parameter_events</topic>
+            <topic>/vehicle/status/control_mode</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics_err</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+            <topic>emergency/hazard_status</topic>
+          </topics>
+        </profile>
+        <profile node="topic_state_monitor_control_command_control_cmd" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/control/command/control_cmd</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="topic_state_monitor_initialpose3d" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/initialpose3d</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="topic_state_monitor_mission_planning_route" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/planning/mission_planning/route</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="topic_state_monitor_object_recognition_objects" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/perception/object_recognition/objects</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="topic_state_monitor_scenario_planning_trajectory" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/planning/scenario_planning/trajectory</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="topic_state_monitor_system_emergency_control_cmd" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>emergency/control_cmd</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="topic_state_monitor_trajectory_follower_control_cmd" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/control/trajectory_follower/control_cmd</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="topic_state_monitor_transform_map_to_base_link" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/tf</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="topic_state_monitor_vector_map" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/map/vector_map</topic>
+            <topic>/parameter_events</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="topic_state_monitor_vehicle_status_steering_status" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/vehicle/status/steering_status</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="topic_state_monitor_vehicle_status_velocity_status" ns="/system">
+          <services reply="ALLOW">
+            <service>~/describe_parameters</service>
+            <service>~/get_parameter_types</service>
+            <service>~/get_parameters</service>
+            <service>~/list_parameters</service>
+            <service>~/set_parameters</service>
+            <service>~/set_parameters_atomically</service>
+          </services>
+          <topics subscribe="ALLOW">
+            <topic>/parameter_events</topic>
+            <topic>/vehicle/status/velocity_status</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>/diagnostics</topic>
+            <topic>/parameter_events</topic>
+            <topic>/rosout</topic>
+          </topics>
+        </profile>
+        <profile node="transform_listener_impl_70f29c04a000" ns="/">
+          <topics subscribe="ALLOW">
+            <topic>parameter_events</topic>
+            <topic>tf</topic>
+            <topic>tf_static</topic>
+          </topics>
+          <topics publish="ALLOW">
+            <topic>rosout</topic>
+          </topics>
+        </profile>
+      </profiles>
+    </enclave>
+  </enclaves>
+</policy>
