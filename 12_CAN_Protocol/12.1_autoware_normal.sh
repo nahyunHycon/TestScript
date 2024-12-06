@@ -1,5 +1,7 @@
 #!/bin/bash
 
+LOG_FILE="/home/hyconsoft_rnd/Desktop/TestScript/09_LogVerification/systemlog.log"
+echo "$(date '+%Y-%m-%d %H:%M:%S') - [12.1] CAN_Normal Test started" >> "$LOG_FILE"
 
 bash_file_path="/home/hyconsoft_rnd/Desktop/TestScript/CAN_Interface/start_up.sh"
 
@@ -27,12 +29,12 @@ sleep 60
 
 ros2 bag play ~/autoware-1/rosbag2_2024_10_23-16_09_36/ -r 0.7 -s sqlite3 &
 
-sleep 30
-
-cansend vcan0 580#ffff000000
-
 sleep 180
 
-bash_file_path="/home/hyconsoft_rnd/Desktop/TestScript/CAN_Protocol/autoware_shutdown.sh"
+sleep 1
+echo "$(date '+%Y-%m-%d %H:%M:%S') - [12.1] CAN_Normal Test finished" >> "$LOG_FILE"
+
+bash_file_path="/home/hyconsoft_rnd/Desktop/TestScript/12_CAN_Protocol/autoware_shutdown.sh"
 bash "$bash_file_path"
+
 

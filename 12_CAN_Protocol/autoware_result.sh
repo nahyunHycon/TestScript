@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 확인할 폴더와 특정 단어를 변수에 저장합니다.
-TARGET_DIR="/home/hyconsoft_rnd/Desktop/TestScript/CAN_Protocol/result"
+TARGET_DIR="/home/hyconsoft_rnd/Desktop/TestScript/12_CAN_Protocol/result"
 SEARCH_TERM="Detect_"
 
 # 해당 폴더에서 특정 단어가 포함된 파일명을 찾습니다.

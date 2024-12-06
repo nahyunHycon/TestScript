@@ -1,8 +1,11 @@
 #!/bin/bash
 
-sudo chattr +i /home/hyconsoft_rnd/Desktop/TestScript/Package/File/requirements.txt
+LOG_FILE="/home/hyconsoft_rnd/Desktop/TestScript/09_LogVerification/log/systemlog.log"
+echo "$(date '+%Y-%m-%d %H:%M:%S') - [1.2] ConfigFile Move Test started" >> "$LOG_FILE"
 
-mv /home/hyconsoft_rnd/Desktop/TestScript/Package/File/requirements.txt  /home/hyconsoft_rnd/Desktop/TestScript/Package
+sudo chattr +i /home/hyconsoft_rnd/Desktop/TestScript/01_SW_Config/File/requirements.txt
+
+mv /home/hyconsoft_rnd/Desktop/TestScript/01_SW_Config/File/requirements.txt  /home/hyconsoft_rnd/Desktop/TestScript/01_SW_Config
 
 #!/bin/bash
 
@@ -22,9 +25,12 @@ done
 
 # 결과에 따라 exit 코드 반환
 if [[ $found -eq 1 ]]; then #있으면 1
-    echo "1"
-    exit 1
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - [1.2] ConfigFile Move Test result = 1 " >> "$LOG_FILE"
+    echo "1"   
 else
-    echo "0"		    #없으면 0
-    exit 0
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - [1.2] ConfigFile Move Test result = 0 " >> "$LOG_FILE"
+    echo "0"		    #없으면 0   
 fi
+
+sleep 1
+echo "$(date '+%Y-%m-%d %H:%M:%S') - [1.2] ConfigFile Move Test finished" >> "$LOG_FILE"

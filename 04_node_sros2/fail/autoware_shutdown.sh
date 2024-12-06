@@ -1,0 +1,66 @@
+#!/bin/bash
+
+killall topic_state_monitor_node
+killall object_lanelet_filter_node
+killall detected_object_feature_remover
+killall traffic_light_multi_camera_fusion_node
+killall localization_error_monitor
+killall topic_state_monitor_node
+killall relay
+killall vehicle_velocity_converter
+killall topic_state_monitor_node
+killall routing_adaptor
+killall system_error_monitor
+killall multi_object_tracker
+killall radar_object_tracker
+killall component_container
+killall decorative_tracker_merger
+killall detection_by_tracker
+killall stop_filter
+killall planning_validator_node
+killall scenario_selector
+killall map_hash_generator
+killall crosswalk_traffic_light_estimator_node
+killall service_log_checker
+killall traffic_light_map_visualizer_node
+killall gyro_bias_estimator
+killall initial_pose_adaptor
+killall topic_state_monitor_node
+killall pose_instability_detector
+killall aggregator_node
+killall web_server.py
+killall ndt_scan_matcher
+killall gnss_poser
+killall goal_pose_visualizer
+killall component_container
+killall pose_initializer_node
+killall object_association_merger_node
+killall obstacle_pointcloud_based_validator_node
+killall gyro_odometer
+killall topic_state_monitor_node
+killall shape_estimation
+killall map_based_prediction
+killall traffic_light_map_based_detector_node
+killall twist2accel
+killall automatic_pose_initializer
+killall duplicated_node_checker_node
+killall imu_corrector
+killall ekf_localizer
+killall emergency_handler
+killall map_projection_loader
+killall planning_evaluator
+killall component_container_mt
+killall object_association_merger_node
+killall external_velocity_limit_selector
+killall traffic_light_occlusion_predictor_node
+killall dashboard
+killall autoware_subscriber
+killall ros2
+killall rviz2
+killall my_package
+killall sros2_pkg
+pkill -f autoware_pubsub
+pkill -f monitoring_topic_pkg
+
+pkill -f autoware
+pkill -f ros2

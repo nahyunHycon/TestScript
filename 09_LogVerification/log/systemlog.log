@@ -1,0 +1,111 @@
+2024-12-04 18:24:48 - [1.1] ConfigFile Test started
+2024-12-04 18:24:48 - [1.1] ConfigFile Test result = 0 
+2024-12-04 18:24:49 - [1.1] ConfigFile Test finished
+2024-12-04 18:24:49 - [1.2] ConfigFile Move Test started
+2024-12-04 18:24:49 - [1.2] ConfigFile Move Test result = 0 
+2024-12-04 18:24:49 - [2.1] Ros2_ID Test started
+2024-12-04 18:24:49 - [2.1] Ros2_ID Test Test result = 0 
+2024-12-04 18:24:50 - [2.1] Ros2_ID Test finished
+2024-12-04 18:28:18 - [2.2] Ros2_sros2 Test started
+2024-12-04 18:28:18 - [2.2] Ros2_sros2 Test result = 0
+2024-12-04 18:28:19 - [2.2] Ros2_sros2 Test finished
+2024-12-04 18:28:20 - [3.1] Package_check Test started
+2024-12-04 18:28:20 - [3.1] Package_check Test result = 0
+2024-12-04 18:28:21 - [3.1] Package_check Test finished
+2024-12-04 18:28:21 - [3.2] Package_Add Test started
+2024-12-04 18:28:21 - [3.2] Package_Add Test result = 0
+2024-12-04 18:28:22 - [3.2] Package_Add Test finished
+2024-12-04 18:28:22 - [3.3] Package_copy Test started
+2024-12-04 18:28:22 - [3.3] Package_copy Test result = 1
+2024-12-04 18:28:23 - [4.1] Node_sros2 Test started
+2024-12-04 18:28:23 - [4.1] Node_sros2 Test result = 0
+2024-12-04 18:28:24 - [4.1] Node_sros2 Test finished
+2024-12-04 18:31:52 - [4.2] Ros2_sros2 Test started
+2024-12-04 18:31:52 - [4.2] Ros2_sros2 Test result = 0
+2024-12-04 18:31:52 - [5.1] Individual_Information SROS2 Test started
+2024-12-04 18:31:52 - [5.1] Individual_Information SROS2 Test result = 0
+2024-12-04 18:31:53 - [5.1] Individual_Information SROS2 Test finished
+2024-12-04 18:31:53 - [5.2] Configfile SROS2 Test started
+2024-12-04 18:31:53 - [5.2] Configfile SROS2 Test result = 0
+2024-12-04 18:31:53 - [6.1] SROS2_Setting Test started
+2024-12-04 18:31:53 - [6.1] SROS2_Setting Test result = 0
+2024-12-04 18:31:55 - [6.1] SROS2_Setting Test finished
+2024-12-04 18:31:55 - [6.2] SROS2_policy Test started
+2024-12-04 18:31:55 - [6.2] SROS2_policy Test result = 0
+2024-12-04 18:35:22 - [7.1] Injection Test started
+2024-12-04 18:35:22 - [7.1] Injection result = 0
+2024-12-04 18:35:23 - [8.1] File Move Test started
+2024-12-04 18:35:23 - [8.1] File Move Test result = 0
+2024-12-04 18:35:23 - [9.1] Log_verification Test started
+2024-12-04 18:35:23 - [9.1] Log_verification Test result = 0
+2024-12-04 18:35:24 - [9.2] Log_File_MV Test started
+2024-12-04 18:35:24 - [9.2] Log_File_MV Test result = 0
+2024-12-04 18:35:24 - [11.1] SSHD_check Test started
+2024-12-04 18:35:24 - [11.1] SSHD_check Test result = 0
+2024-12-04 18:35:25 - [11.1] SSHD_check Test finished
+2024-12-04 18:35:26 - [11.2] Firewall_check Test started
+2024-12-04 18:35:26 - [11.2] Firewall_check Test result = 0
+2024-12-04 18:35:27 - [11.2] Firewall_check Test finished
+2024-12-04 18:35:27 - [11.3] ConfigFile_check Test started
+2024-12-04 18:35:27 - [11.3] ConfigFile_check Test result = 0
+2024-12-04 18:35:28 - [11.3] ConfigFile_check Test finished
+2024-12-05 09:05:43 - [1.1] ConfigFile Test started
+2024-12-05 09:05:43 - [1.1] ConfigFile Test result = 0 
+2024-12-05 09:05:44 - [1.1] ConfigFile Test finished
+2024-12-05 09:05:45 - [1.2] ConfigFile Move Test started
+2024-12-05 09:05:45 - [1.2] ConfigFile Move Test result = 0 
+2024-12-05 09:05:46 - [1.2] ConfigFile Move Test finished
+2024-12-05 09:05:46 - [2.1] Ros2_ID Test started
+2024-12-05 09:05:46 - [2.1] Ros2_ID Test Test result = 0 
+2024-12-05 09:05:47 - [2.1] Ros2_ID Test finished
+2024-12-05 09:09:15 - [2.2] Ros2_sros2 Test started
+2024-12-05 09:09:15 - [2.2] Ros2_sros2 Test result = 0
+2024-12-05 09:09:16 - [2.2] Ros2_sros2 Test finished
+2024-12-05 09:09:17 - [3.1] Package_check Test started
+2024-12-05 09:09:17 - [3.1] Package_check Test result = 0
+2024-12-05 09:09:18 - [3.1] Package_check Test finished
+2024-12-05 09:09:18 - [3.2] Package_Add Test started
+2024-12-05 09:09:18 - [3.2] Package_Add Test result = 0
+2024-12-05 09:09:19 - [3.2] Package_Add Test finished
+2024-12-05 09:09:20 - [3.3] Package_copy Test started
+2024-12-05 09:09:20 - [3.3] Package_copy Test result = 1
+2024-12-05 09:09:21 - [3.3] Package_copy Test finished
+2024-12-05 09:09:22 - [4.1] Node_sros2 Test started
+2024-12-05 09:09:22 - [4.1] Node_sros2 Test result = 0
+2024-12-05 09:09:23 - [4.1] Node_sros2 Test finished
+2024-12-05 09:12:51 - [4.2] Ros2_sros2 Test started
+2024-12-05 09:12:51 - [4.2] Ros2_sros2 Test result = 0
+2024-12-05 09:12:52 - [4.2] Ros2_sros2 Test finished
+2024-12-05 09:12:52 - [5.1] Individual_Information SROS2 Test started
+2024-12-05 09:12:52 - [5.1] Individual_Information SROS2 Test result = 0
+2024-12-05 09:12:53 - [5.1] Individual_Information SROS2 Test finished
+2024-12-05 09:12:53 - [5.2] Configfile SROS2 Test started
+2024-12-05 09:12:53 - [5.2] Configfile SROS2 Test result = 0
+2024-12-05 09:12:54 - [5.2] Configfile SROS2 Test finished
+2024-12-05 09:12:55 - [6.1] SROS2_Setting Test started
+2024-12-05 09:12:55 - [6.1] SROS2_Setting Test result = 0
+2024-12-05 09:12:56 - [6.1] SROS2_Setting Test finished
+2024-12-05 09:12:56 - [6.2] SROS2_policy Test started
+2024-12-05 09:12:56 - [6.2] SROS2_policy Test result = 0
+2024-12-05 09:12:57 - [6.2] SROS2_policy Test finished
+2024-12-05 09:16:25 - [7.1] Injection Test started
+2024-12-05 09:16:25 - [7.1] Injection result = 0
+2024-12-05 09:16:26 - [7.1] Injection Test finished
+2024-12-05 09:16:26 - [8.1] File Move Test started
+2024-12-05 09:16:26 - [8.1] File Move Test result = 0
+2024-12-05 09:16:27 - [8.1] File Move Test finished
+2024-12-05 09:16:27 - [9.1] Log_verification Test started
+2024-12-05 09:16:27 - [9.1] Log_verification Test result = 0
+2024-12-05 09:16:28 - [9.1] Log_verification Test finished
+2024-12-05 09:16:29 - [9.2] Log_File_MV Test started
+2024-12-05 09:16:29 - [9.2] Log_File_MV Test result = 0
+2024-12-05 09:16:30 - [9.2] Log_File_MV Test finished
+2024-12-05 09:16:30 - [11.1] SSHD_check Test started
+2024-12-05 09:16:30 - [11.1] SSHD_check Test result = 0
+2024-12-05 09:16:31 - [11.1] SSHD_check Test finished
+2024-12-05 09:16:31 - [11.2] Firewall_check Test started
+2024-12-05 09:16:31 - [11.2] Firewall_check Test result = 0
+2024-12-05 09:16:32 - [11.2] Firewall_check Test finished
+2024-12-05 09:16:32 - [11.3] ConfigFile_check Test started
+2024-12-05 09:16:32 - [11.3] ConfigFile_check Test result = 0
+2024-12-05 09:16:33 - [11.3] ConfigFile_check Test finished

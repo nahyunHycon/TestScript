@@ -1,8 +1,11 @@
 #!/bin/bash
 
+LOG_FILE="/home/hyconsoft_rnd/Desktop/TestScript/09_LogVerification/log/systemlog.log"
+echo "$(date '+%Y-%m-%d %H:%M:%S') - [3.3] Package_copy Test started" >> "$LOG_FILE"
+
 sudo chattr +i /home/hyconsoft_rnd/Desktop/TestScript/03_Package/File/requirements_curr.txt
 
-cp /home/hyconsoft_rnd/Desktop/TestScript/03_Package/File/requirements_curr.txt  /home/hyconsoft_rnd/Desktop/TestScript/03_Package/result/requirements_curr.txt
+mv /home/hyconsoft_rnd/Desktop/TestScript/03_Package/File/requirements_curr.txt  /home/hyconsoft_rnd/Desktop/TestScript/03_Package/result/requirements_curr.txt
 
 
 
@@ -20,11 +23,15 @@ for file in "$TARGET_DIR"/*"$SEARCH_TERM"*; do
     fi
 done
 
+
 # 결과에 따라 exit 코드 반환
 if [[ $found -eq 1 ]]; then #있으면 1
-    echo "1"
-    exit 1
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - [3.3] Package_copy Test result = 0" >> "$LOG_FILE" 
+    echo "1"   
 else
-    echo "0"		    #없으면 0
-    exit 0
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - [3.3] Package_copy Test result = 1" >> "$LOG_FILE" 
+    echo "0"		    #없으면 0    
 fi
+
+sleep 1
+echo "$(date '+%Y-%m-%d %H:%M:%S') - [3.3] Package_copy Test finished" >> "$LOG_FILE"
