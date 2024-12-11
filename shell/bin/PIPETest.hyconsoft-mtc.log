@@ -1,0 +1,93 @@
+2024/Dec/11 13:55:02.696120 - TTCN-3 Main Test Component started on hyconsoft. Version: 11.0.0.
+2024/Dec/11 13:55:02.696217 - TTCN Logger v2.2 options: TimeStampFormat:=DateTime; LogEntityName:=No; LogEventTypes:=No; SourceInfoFormat:=Single; LogSensitiveData:=No; *.FileMask:=LOG_ALL | DEBUG; *.ConsoleMask:=LOG_ALL | MATCHING | DEBUG; LogFileSize:=0; LogFileNumber:=1; DiskFullAction:=Error
+2024/Dec/11 13:55:02.698131 - Connected to MC.
+2024/Dec/11 13:55:02.769949 - Executing control part of module PipeTest.
+2024/Dec/11 13:55:02.770038 PipeTest.ttcn:1449 Execution of control part in module PipeTest started.
+2024/Dec/11 13:55:02.770076 PipeTest.ttcn:385 Test case TC_SW_Config_01 started.
+2024/Dec/11 13:55:02.770094 PipeTest.ttcn:385 Initializing variables, timers and ports of component type PipeTest.PIPE_CT inside testcase TC_SW_Config_01.
+2024/Dec/11 13:55:02.770361 PipeTest.ttcn:385 Port PIPE_PCO was started.
+2024/Dec/11 13:55:02.770565 PipeTest.ttcn:385 Port PIPE_PCO1 was started.
+2024/Dec/11 13:55:02.770609 PipeTest.ttcn:385 Component type PipeTest.PIPE_CT was initialized.
+2024/Dec/11 13:55:02.770622 PipeTest.ttcn:388 Mapping port mtc:PIPE_PCO to system:PIPE_PCO.
+2024/Dec/11 13:55:02.867998 PipeTest.ttcn:388 Port PIPE_PCO was mapped to system:PIPE_PCO.
+2024/Dec/11 13:55:02.974617 PipeTest.ttcn:388 Map operation of mtc:PIPE_PCO to system:PIPE_PCO finished.
+2024/Dec/11 13:55:02.974723 PipeTest.ttcn:389 Sent on PIPE_PCO to system @PIPEasp_Types.ASP_PExecute : { command := "sh", stdin := "/home/hyconsoft_rnd/Desktop/TestScript/01_SW_Config/1.1_config_file_pass.sh; exit" }
+2024/Dec/11 13:55:03.989121 PipeTest.ttcn:391 Message enqueued on PIPE_PCO from system @PIPEasp_Types.ASP_PResult : { stdout := "0", stderr := "", code := 0 } id 1
+2024/Dec/11 13:55:03.989194 PipeTest.ttcn:393 Receive operation on port PIPE_PCO succeeded, message from system(): @PIPEasp_Types.ASP_PResult : { stdout := "0", stderr := "", code := 0 } id 1
+2024/Dec/11 13:55:03.989210 PipeTest.ttcn:393 Message with id 1 was extracted from the queue of PIPE_PCO.
+2024/Dec/11 13:55:03.989216 PipeTest.ttcn:394 setverdict(pass): none -> pass
+2024/Dec/11 13:55:03.989230 PipeTest.ttcn:402 Unmapping port mtc:PIPE_PCO from system:PIPE_PCO.
+2024/Dec/11 13:55:04.103176 PipeTest.ttcn:402 Port PIPE_PCO was unmapped from system:PIPE_PCO.
+2024/Dec/11 13:55:04.127740 PipeTest.ttcn:402 Unmap operation of mtc:PIPE_PCO from system:PIPE_PCO finished.
+2024/Dec/11 13:55:04.127809 PipeTest.ttcn:402 Terminating component type PipeTest.PIPE_CT.
+2024/Dec/11 13:55:04.127820 PipeTest.ttcn:402 Port PIPE_PCO was stopped.
+2024/Dec/11 13:55:04.127829 PipeTest.ttcn:402 Port PIPE_PCO1 was stopped.
+2024/Dec/11 13:55:04.127835 PipeTest.ttcn:402 Component type PipeTest.PIPE_CT was shut down inside testcase TC_SW_Config_01.
+2024/Dec/11 13:55:04.127843 PipeTest.ttcn:402 Waiting for PTCs to finish.
+2024/Dec/11 13:55:04.408248 PipeTest.ttcn:402 Setting final verdict of the test case.
+2024/Dec/11 13:55:04.408318 PipeTest.ttcn:402 Local verdict of MTC: pass
+2024/Dec/11 13:55:04.408328 PipeTest.ttcn:402 No PTCs were created.
+2024/Dec/11 13:55:04.408340 PipeTest.ttcn:402 Test case TC_SW_Config_01 finished. Verdict: pass
+2024/Dec/11 13:55:04.408352 PipeTest.ttcn:406 Test case TC_SW_Config_02 started.
+2024/Dec/11 13:55:04.408360 PipeTest.ttcn:406 Initializing variables, timers and ports of component type PipeTest.PIPE_CT inside testcase TC_SW_Config_02.
+2024/Dec/11 13:55:04.408373 PipeTest.ttcn:406 Port PIPE_PCO was started.
+2024/Dec/11 13:55:04.408381 PipeTest.ttcn:406 Port PIPE_PCO1 was started.
+2024/Dec/11 13:55:04.408387 PipeTest.ttcn:406 Component type PipeTest.PIPE_CT was initialized.
+2024/Dec/11 13:55:04.408395 PipeTest.ttcn:409 Mapping port mtc:PIPE_PCO to system:PIPE_PCO.
+2024/Dec/11 13:55:04.413295 PipeTest.ttcn:409 Port PIPE_PCO was mapped to system:PIPE_PCO.
+2024/Dec/11 13:55:04.478812 PipeTest.ttcn:409 Map operation of mtc:PIPE_PCO to system:PIPE_PCO finished.
+2024/Dec/11 13:55:04.478881 PipeTest.ttcn:410 Sent on PIPE_PCO to system @PIPEasp_Types.ASP_PExecute : { command := "sh", stdin := "/home/hyconsoft_rnd/Desktop/TestScript/01_SW_Config/1.2_filemv_pass.sh; exit" }
+2024/Dec/11 13:55:05.493537 PipeTest.ttcn:412 Message enqueued on PIPE_PCO from system @PIPEasp_Types.ASP_PResult : { stdout := "0", stderr := "mv: '/home/hyconsoft_rnd/Desktop/TestScript/01_SW_Config/File/requirements.txt'" & char(0, 0, 0, 235) & char(0, 0, 0, 165) & char(0, 0, 0, 188) & " '/home/hyconsoft_rnd/Desktop/TestScript/01_SW_Config/requirements.txt'" & char(0, 0, 0, 235) & char(0, 0, 0, 161) & char(0, 0, 0, 156) & " " & char(0, 0, 0, 236) & char(0, 0, 0, 152) & char(0, 0, 0, 174) & char(0, 0, 0, 234) & char(0, 0, 0, 184) & char(0, 0, 0, 184) & " " & char(0, 0, 0, 236) & char(0, 0, 0, 136) & char(0, 0, 0, 152) & " " & char(0, 0, 0, 236) & char(0, 0, 0, 151) & char(0, 0, 0, 134) & char(0, 0, 0, 236) & char(0, 0, 0, 157) & char(0, 0, 0, 140) & ": " & char(0, 0, 0, 235) & char(0, 0, 0, 170) & char(0, 0, 0, 133) & char(0, 0, 0, 235) & char(0, 0, 0, 160) & char(0, 0, 0, 185) & char(0, 0, 0, 236) & char(0, 0, 0, 157) & char(0, 0, 0, 132) & " " & char(0, 0, 0, 237) & char(0, 0, 0, 151) & char(0, 0, 0, 136) & char(0, 0, 0, 236) & char(0, 0, 0, 154) & char(0, 0, 0, 169) & char(0, 0, 0, 237) & char(0, 0, 0, 149) & char(0, 0, 0, 152) & char(0, 0, 0, 236) & char(0, 0, 0, 167) & char(0, 0, 0, 128) & " " & char(0, 0, 0, 236) & char(0, 0, 0, 149) & char(0, 0, 0, 138) & char(0, 0, 0, 236) & char(0, 0, 0, 157) & char(0, 0, 0, 140), code := 0 } id 1
+2024/Dec/11 13:55:05.493641 PipeTest.ttcn:414 Receive operation on port PIPE_PCO succeeded, message from system(): @PIPEasp_Types.ASP_PResult : { stdout := "0", stderr := "mv: '/home/hyconsoft_rnd/Desktop/TestScript/01_SW_Config/File/requirements.txt'" & char(0, 0, 0, 235) & char(0, 0, 0, 165) & char(0, 0, 0, 188) & " '/home/hyconsoft_rnd/Desktop/TestScript/01_SW_Config/requirements.txt'" & char(0, 0, 0, 235) & char(0, 0, 0, 161) & char(0, 0, 0, 156) & " " & char(0, 0, 0, 236) & char(0, 0, 0, 152) & char(0, 0, 0, 174) & char(0, 0, 0, 234) & char(0, 0, 0, 184) & char(0, 0, 0, 184) & " " & char(0, 0, 0, 236) & char(0, 0, 0, 136) & char(0, 0, 0, 152) & " " & char(0, 0, 0, 236) & char(0, 0, 0, 151) & char(0, 0, 0, 134) & char(0, 0, 0, 236) & char(0, 0, 0, 157) & char(0, 0, 0, 140) & ": " & char(0, 0, 0, 235) & char(0, 0, 0, 170) & char(0, 0, 0, 133) & char(0, 0, 0, 235) & char(0, 0, 0, 160) & char(0, 0, 0, 185) & char(0, 0, 0, 236) & char(0, 0, 0, 157) & char(0, 0, 0, 132) & " " & char(0, 0, 0, 237) & char(0, 0, 0, 151) & char(0, 0, 0, 136) & char(0, 0, 0, 236) & char(0, 0, 0, 154) & char(0, 0, 0, 169) & char(0, 0, 0, 237) & char(0, 0, 0, 149) & char(0, 0, 0, 152) & char(0, 0, 0, 236) & char(0, 0, 0, 167) & char(0, 0, 0, 128) & " " & char(0, 0, 0, 236) & char(0, 0, 0, 149) & char(0, 0, 0, 138) & char(0, 0, 0, 236) & char(0, 0, 0, 157) & char(0, 0, 0, 140), code := 0 } id 1
+2024/Dec/11 13:55:05.493668 PipeTest.ttcn:414 Message with id 1 was extracted from the queue of PIPE_PCO.
+2024/Dec/11 13:55:05.493679 PipeTest.ttcn:415 setverdict(pass): none -> pass
+2024/Dec/11 13:55:05.493688 PipeTest.ttcn:423 Unmapping port mtc:PIPE_PCO from system:PIPE_PCO.
+2024/Dec/11 13:55:05.575565 PipeTest.ttcn:423 Port PIPE_PCO was unmapped from system:PIPE_PCO.
+2024/Dec/11 13:55:05.722624 PipeTest.ttcn:423 Unmap operation of mtc:PIPE_PCO from system:PIPE_PCO finished.
+2024/Dec/11 13:55:05.722680 PipeTest.ttcn:423 Terminating component type PipeTest.PIPE_CT.
+2024/Dec/11 13:55:05.722691 PipeTest.ttcn:423 Port PIPE_PCO was stopped.
+2024/Dec/11 13:55:05.722703 PipeTest.ttcn:423 Port PIPE_PCO1 was stopped.
+2024/Dec/11 13:55:05.722709 PipeTest.ttcn:423 Component type PipeTest.PIPE_CT was shut down inside testcase TC_SW_Config_02.
+2024/Dec/11 13:55:05.722717 PipeTest.ttcn:423 Waiting for PTCs to finish.
+2024/Dec/11 13:55:05.741409 PipeTest.ttcn:423 Setting final verdict of the test case.
+2024/Dec/11 13:55:05.741499 PipeTest.ttcn:423 Local verdict of MTC: pass
+2024/Dec/11 13:55:05.741509 PipeTest.ttcn:423 No PTCs were created.
+2024/Dec/11 13:55:05.741522 PipeTest.ttcn:423 Test case TC_SW_Config_02 finished. Verdict: pass
+2024/Dec/11 13:55:05.741534 PipeTest.ttcn:426 Test case TC_Authorization_01 started.
+2024/Dec/11 13:55:05.741553 PipeTest.ttcn:426 Initializing variables, timers and ports of component type PipeTest.PIPE_CT inside testcase TC_Authorization_01.
+2024/Dec/11 13:55:05.741568 PipeTest.ttcn:426 Port PIPE_PCO was started.
+2024/Dec/11 13:55:05.741576 PipeTest.ttcn:426 Port PIPE_PCO1 was started.
+2024/Dec/11 13:55:05.741582 PipeTest.ttcn:426 Component type PipeTest.PIPE_CT was initialized.
+2024/Dec/11 13:55:05.741589 PipeTest.ttcn:429 Mapping port mtc:PIPE_PCO to system:PIPE_PCO.
+2024/Dec/11 13:55:05.844777 PipeTest.ttcn:429 Port PIPE_PCO was mapped to system:PIPE_PCO.
+2024/Dec/11 13:55:05.867619 PipeTest.ttcn:429 Map operation of mtc:PIPE_PCO to system:PIPE_PCO finished.
+2024/Dec/11 13:55:05.867696 PipeTest.ttcn:430 Sent on PIPE_PCO to system @PIPEasp_Types.ASP_PExecute : { command := "sh", stdin := "/home/hyconsoft_rnd/Desktop/TestScript/02_Authorization/2.1_ros2_ID.sh; exit" }
+2024/Dec/11 13:55:06.876211 PipeTest.ttcn:432 Message enqueued on PIPE_PCO from system @PIPEasp_Types.ASP_PResult : { stdout := "0", stderr := "", code := 0 } id 1
+2024/Dec/11 13:55:06.876256 PipeTest.ttcn:434 Receive operation on port PIPE_PCO succeeded, message from system(): @PIPEasp_Types.ASP_PResult : { stdout := "0", stderr := "", code := 0 } id 1
+2024/Dec/11 13:55:06.876269 PipeTest.ttcn:434 Message with id 1 was extracted from the queue of PIPE_PCO.
+2024/Dec/11 13:55:06.876275 PipeTest.ttcn:435 setverdict(pass): none -> pass
+2024/Dec/11 13:55:06.876282 PipeTest.ttcn:443 Unmapping port mtc:PIPE_PCO from system:PIPE_PCO.
+2024/Dec/11 13:55:06.955773 PipeTest.ttcn:443 Port PIPE_PCO was unmapped from system:PIPE_PCO.
+2024/Dec/11 13:55:06.966304 PipeTest.ttcn:443 Unmap operation of mtc:PIPE_PCO from system:PIPE_PCO finished.
+2024/Dec/11 13:55:06.966337 PipeTest.ttcn:443 Terminating component type PipeTest.PIPE_CT.
+2024/Dec/11 13:55:06.966349 PipeTest.ttcn:443 Port PIPE_PCO was stopped.
+2024/Dec/11 13:55:06.966357 PipeTest.ttcn:443 Port PIPE_PCO1 was stopped.
+2024/Dec/11 13:55:06.966363 PipeTest.ttcn:443 Component type PipeTest.PIPE_CT was shut down inside testcase TC_Authorization_01.
+2024/Dec/11 13:55:06.966371 PipeTest.ttcn:443 Waiting for PTCs to finish.
+2024/Dec/11 13:55:07.109305 PipeTest.ttcn:443 Setting final verdict of the test case.
+2024/Dec/11 13:55:07.109381 PipeTest.ttcn:443 Local verdict of MTC: pass
+2024/Dec/11 13:55:07.109392 PipeTest.ttcn:443 No PTCs were created.
+2024/Dec/11 13:55:07.109404 PipeTest.ttcn:443 Test case TC_Authorization_01 finished. Verdict: pass
+2024/Dec/11 13:55:07.109416 PipeTest.ttcn:447 Test case TC_Authorization_02 started.
+2024/Dec/11 13:55:07.109423 PipeTest.ttcn:447 Initializing variables, timers and ports of component type PipeTest.PIPE_CT inside testcase TC_Authorization_02.
+2024/Dec/11 13:55:07.109438 PipeTest.ttcn:447 Port PIPE_PCO was started.
+2024/Dec/11 13:55:07.109447 PipeTest.ttcn:447 Port PIPE_PCO1 was started.
+2024/Dec/11 13:55:07.109453 PipeTest.ttcn:447 Component type PipeTest.PIPE_CT was initialized.
+2024/Dec/11 13:55:07.109460 PipeTest.ttcn:450 Mapping port mtc:PIPE_PCO to system:PIPE_PCO.
+2024/Dec/11 13:55:07.274423 PipeTest.ttcn:450 Port PIPE_PCO was mapped to system:PIPE_PCO.
+2024/Dec/11 13:55:07.480124 PipeTest.ttcn:450 Map operation of mtc:PIPE_PCO to system:PIPE_PCO finished.
+2024/Dec/11 13:55:07.480202 PipeTest.ttcn:454 Sent on PIPE_PCO to system @PIPEasp_Types.ASP_PExecute : { command := "python3 /home/hyconsoft_rnd/Desktop/TestScript/02_Authorization/autoware_start.py", stdin := "exit" }
+2024/Dec/11 13:55:07.492151 PipeTest.ttcn:455 Message enqueued on PIPE_PCO from system @PIPEasp_Types.ASP_PResult : { stdout := "", stderr := "", code := 0 } id 1
+2024/Dec/11 13:55:07.492184 PipeTest.ttcn:455 Receive operation on port PIPE_PCO succeeded, message from system(): @PIPEasp_Types.ASP_PResult : { stdout := "", stderr := "", code := 0 } id 1
+2024/Dec/11 13:55:07.492196 PipeTest.ttcn:455 Message with id 1 was extracted from the queue of PIPE_PCO.
+2024/Dec/11 13:55:07.492204 PipeTest.ttcn:377 Start timer T: 30 s

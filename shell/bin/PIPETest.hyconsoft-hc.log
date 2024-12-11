@@ -1,0 +1,21 @@
+2024/Dec/11 13:55:02.676096 - TTCN-3 Host Controller started on hyconsoft. Version: 11.0.0.
+2024/Dec/11 13:55:02.676127 - TTCN Logger v2.2 options: TimeStampFormat:=DateTime; LogEntityName:=No; LogEventTypes:=No; SourceInfoFormat:=Single; LogSensitiveData:=No; *.FileMask:=LOG_ALL | DEBUG; *.ConsoleMask:=LOG_ALL | MATCHING | DEBUG; LogFileSize:=0; LogFileNumber:=1; DiskFullAction:=Error
+2024/Dec/11 13:55:02.676275 - The local address was set to .
+2024/Dec/11 13:55:02.676286 - The address of MC was set to 192.168.0.6:0.
+2024/Dec/11 13:55:02.679344 - Connected to MC.
+2024/Dec/11 13:55:02.679359 - This host supports UNIX domain sockets for local communication.
+2024/Dec/11 13:55:02.692091 - Processing configuration data received from MC.
+2024/Dec/11 13:55:02.692250 - Initializing module PIPEasp_PortType.
+2024/Dec/11 13:55:02.692254 PIPEasp_PortType.ttcn:0 Initializing module PIPEasp_Types.
+2024/Dec/11 13:55:02.692258 PIPEasp_PortType.ttcn:0 Initialization of module PIPEasp_Types finished.
+2024/Dec/11 13:55:02.692262 - Initialization of module PIPEasp_PortType finished.
+2024/Dec/11 13:55:02.692266 - Initializing module PIPEasp_Templates.
+2024/Dec/11 13:55:02.692270 - Initialization of module PIPEasp_Templates finished.
+2024/Dec/11 13:55:02.692273 - Initializing module PipeTest.
+2024/Dec/11 13:55:02.692277 - Initialization of module PipeTest finished.
+2024/Dec/11 13:55:02.692280 - Initializing module PreGenRecordOf.
+2024/Dec/11 13:55:02.692283 - Initialization of module PreGenRecordOf finished.
+2024/Dec/11 13:55:02.692287 - Initializing module TitanLoggerApi.
+2024/Dec/11 13:55:02.692290 - Initialization of module TitanLoggerApi finished.
+2024/Dec/11 13:55:02.692294 - Configuration data was processed successfully.
+2024/Dec/11 13:55:02.695901 - MTC was created. Process id: 389903.

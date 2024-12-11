@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2000-2023 Ericsson Telecom AB
+
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v2.0
+  which accompanies this distribution, and is available at
+  https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.html
+ -->
+<TITAN_Project_File_Information version="1.0">
+  <ProjectName>PIPEasp_CNL113334_demo</ProjectName>
+  <ReferencedProjects>
+    <ReferencedProject name="PIPEasp_CNL113334" projectLocationURI="../PIPEasp_CNL113334.tpd"/>
+  </ReferencedProjects>
+  <Folders>
+    <FolderResource projectRelativePath="demo" relativeURI=""/>
+  </Folders>
+  <Files>
+    <FileResource projectRelativePath="demo/PIPE.cfg" relativeURI="PIPE.cfg"/>
+    <FileResource projectRelativePath="demo/PIPEasp_Templates.ttcn" relativeURI="PIPEasp_Templates.ttcn"/>
+    <FileResource projectRelativePath="demo/PipeTest.ttcn" relativeURI="PipeTest.ttcn"/>
+    <FileResource projectRelativePath="demo/ShellNotice.sh" relativeURI="ShellNotice.sh"/>
+    <FileResource projectRelativePath="demo/ShellQuestionString.sh" relativeURI="ShellQuestionString.sh"/>
+    <FileResource projectRelativePath="demo/ShellQuestionYesNo.sh" relativeURI="ShellQuestionYesNo.sh"/>
+  </Files>
+  <ActiveConfiguration>Default</ActiveConfiguration>
+  <Configurations>
+    <Configuration name="Default">
+      <ProjectProperties>
+        <MakefileSettings>
+          <generateInternalMakefile>true</generateInternalMakefile>
+          <GNUMake>true</GNUMake>
+          <incrementalDependencyRefresh>true</incrementalDependencyRefresh>
+          <targetExecutable>bin/PIPEasp_CNL113334_demo</targetExecutable>
+        </MakefileSettings>
+        <LocalBuildSettings>
+          <workingDirectory>bin</workingDirectory>
+        </LocalBuildSettings>
+        <NamingCoventions>
+          <enableProjectSpecificSettings>true</enableProjectSpecificSettings>
+          <altstep>.*</altstep>
+          <function>.*</function>
+          <globalPort>.*</globalPort>
+          <testcase>.*</testcase>
+          <localVariable>.*</localVariable>
+          <localTimer>.*</localTimer>
+          <formalParameter>.*</formalParameter>
+        </NamingCoventions>
+      </ProjectProperties>
+    </Configuration>
+  </Configurations>
+</TITAN_Project_File_Information>
