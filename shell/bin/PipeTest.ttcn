@@ -1428,7 +1428,7 @@ testcase TC_CAN_Injection() runs on PIPE_CT
       }
   }
   
-  PIPE_PCO.send(t_PExecute("sh", "/home/hyconsoft_rnd/Desktop/TestScript/12_CAN_Protocol/12.2_autoware_pen.sh; exit"));   
+  PIPE_PCO.send(t_PExecute("sh", "/home/hyconsoft_rnd/Desktop/TestScript/12_CAN_Protocol/12.1_autoware_pen.sh; exit"));   
   alt {
       //File o
       []PIPE_PCO.receive(t_PResult("0",?,?)) -> value v_ASP_PResult{
