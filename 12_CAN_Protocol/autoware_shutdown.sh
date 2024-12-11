@@ -65,3 +65,4 @@ pkill -f autoware
 pkill -f ros2
 pkill -f autoware_pubsub
 pkill -f monitoring_topic_pkg
+pkill -f dashboard
