@@ -1446,6 +1446,100 @@ testcase TC_CAN_Injection() runs on PIPE_CT
 }
 
 
+testcase TC_metasploit_TCP() runs on PIPE_CT
+{
+  map(self:PIPE_PCO, system:PIPE_PCO);    
+
+  timer t_guard;
+
+  PIPE_PCO.send(t_PExecute("python3 /home/hyconsoft_rnd/Desktop/TestScript/13_Metasploit/metasploit_tcp.py", "exit")); 
+  
+  t_guard.start(5.0);  
+  alt {
+    [] t_guard.timeout {
+      log("Timer expired, continue...");
+    }
+  }
+
+  PIPE_PCO.send(t_PKill(9));
+  t_guard.start(5.0);
+  alt {
+    [] t_guard.timeout {
+      log("Timer expired, continue...");
+    }
+  }
+  PIPE_PCO.receive(t_PResult(?,?,?)); 
+  
+  t_guard.start(5.0);
+  alt {
+    [] t_guard.timeout {
+      log("Timer expired, continue...");
+    }
+  }
+
+  PIPE_PCO.send(t_PExecute("sh", "/home/hyconsoft_rnd/Desktop/TestScript/13_Metasploit/13.1_Metasploit_TCP.sh; exit"));   
+  alt {
+      //File o
+      []PIPE_PCO.receive(t_PResult("0",?,?)) -> value v_ASP_PResult{
+          setverdict(pass);            
+      }
+      //File x 
+      []PIPE_PCO.receive(t_PResult("1",?,?)) -> value v_ASP_PResult{
+         	setverdict(fail);
+      }                          
+  }  
+
+  unmap(self:PIPE_PCO, system:PIPE_PCO);  
+  
+}
+
+testcase TC_metasploit_TELNET() runs on PIPE_CT
+{
+  map(self:PIPE_PCO, system:PIPE_PCO);    
+
+  timer t_guard;
+  
+  PIPE_PCO.send(t_PExecute("python3 /home/hyconsoft_rnd/Desktop/TestScript/13_Metasploit/metasploit_telnet.py", "exit")); 
+  
+  t_guard.start(5.0);  
+  alt {
+    [] t_guard.timeout {
+      log("Timer expired, continue...");
+    }
+  }
+
+  PIPE_PCO.send(t_PKill(9));
+  t_guard.start(5.0);
+  alt {
+    [] t_guard.timeout {
+      log("Timer expired, continue...");
+    }
+  }
+  PIPE_PCO.receive(t_PResult(?,?,?)); 
+  
+  t_guard.start(5.0);
+  alt {
+    [] t_guard.timeout {
+      log("Timer expired, continue...");
+    }
+  }
+
+  PIPE_PCO.send(t_PExecute("sh", "/home/hyconsoft_rnd/Desktop/TestScript/13_Metasploit/13.2_Metasploit_Telnet.sh; exit"));   
+  alt {
+      //File o
+      []PIPE_PCO.receive(t_PResult("0",?,?)) -> value v_ASP_PResult{
+          setverdict(pass);            
+      }
+      //File x 
+      []PIPE_PCO.receive(t_PResult("1",?,?)) -> value v_ASP_PResult{
+         	setverdict(fail);
+      }                          
+  }  
+
+  unmap(self:PIPE_PCO, system:PIPE_PCO);  
+  
+}
+
 control
 {
   execute(TC_SW_Config_01());  
@@ -1469,7 +1563,8 @@ control
   execute(TC_Firewall_02());
   execute(TC_Firewall_03());
   execute(TC_CAN_Injection());
-
+  execute(TC_metasploit_TCP());
+  execute(TC_metasploit_TELNET());
 }
 
 }
